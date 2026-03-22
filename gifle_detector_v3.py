@@ -4,12 +4,13 @@ gifle_detector_v3.py
 Detecteur de gifles - pipeline 4 passes optimal
 
 Passe 1  Onset detection   librosa (CPU, <1 min)      -> ~800 candidats
-Passe 2  CLAP HTSAT-fused  audio semantique (GPU)     -> ~50 candidats
+Passe 2  Audio model       CLAP HTSAT-fused (zero-shot) OU
+                           PANNs CNN14 (supervise AudioSet "Slap,smack" #467)
 Passe 3  DFN5B ViT-H-378   visuel statique (GPU)      -> ~25 candidats
 Passe 4  MediaPipe          wrist velocity + head snap -> ~12-15 resultats
 
 Total : ~15-20 min pour un film entier
-Modeles : LAION-CLAP HTSAT-fused + DFN5B-CLIP-ViT-H-14-378 + MediaPipe Pose
+Modeles : LAION-CLAP HTSAT-fused / PANNs CNN14 + DFN5B-CLIP-ViT-H-14-378 + MediaPipe Pose
 """
 
 import os, sys, json, argparse, subprocess, tempfile
@@ -17,6 +18,7 @@ from typing import Optional, List, Tuple
 
 import numpy as np
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
 import librosa
 import cv2
@@ -31,15 +33,29 @@ AUDIO_SURE       = 0.72      # score CLAP -> pas besoin visuel
 AUDIO_MIN        = 0.30      # rejet direct
 FINAL_MIN_SCORE  = 0.45      # seuil score fusionne
 VISUAL_FRAMES    = 3
-VISUAL_BATCH     = 32
+VISUAL_BATCH     = 8
 MEDIAPIPE_FRAMES = 16        # +/-8 frames autour du pic
 WRIST_VEL_THRESH = 0.03      # vitesse normalisee min poignet (0-1 espace image)
 HEAD_SNAP_THRESH = 0.015     # deplacement lateral tete normalise
 CLIP_BEFORE_S    = 2.0
 CLIP_AFTER_S     = 3.0
 
-CKPT_DIR  = os.environ.get("IMAGEBIND_CACHE", r"C:\.checkpoints")
-CLAP_CKPT = os.path.join(CKPT_DIR, "music_audioset_epoch_15_esc_90.14.pt")
+CKPT_DIR   = os.environ.get("IMAGEBIND_CACHE", r"C:\.checkpoints")
+CLAP_CKPT  = os.path.join(CKPT_DIR, "music_audioset_epoch_15_esc_90.14.pt")
+PANNS_CKPT = os.path.join(CKPT_DIR, "Cnn14_16k_mAP=0.438.pth")
+# PANNs CNN14 parametres (doit correspondre au checkpoint 16k)
+PANNS_N_FFT    = 512
+PANNS_HOP_LEN  = 160
+PANNS_MEL_BINS = 64
+PANNS_FMIN     = 50
+PANNS_FMAX     = 8000
+PANNS_SLAP_IDX = 467        # AudioSet "Slap, smack"
+PANNS_WIN_S    = 1.0        # fenetre de scan PANNs (secondes)
+PANNS_HOP_S    = 0.1        # pas de scan PANNs (secondes)
+PANNS_SCALE    = 0.10       # P=PANNS_SCALE -> score normalise=1.0
+# Seuils PANNs (en score normalise = raw_P / PANNS_SCALE)
+PANNS_SURE     = 0.45       # confident -> pas besoin visuel (P~=0.045)
+PANNS_MIN      = 0.08       # rejet direct (P~=0.008)
 
 SLAP_POS_PROMPTS = [
     "a person slapping another person in the face",
@@ -215,6 +231,147 @@ def clap_score(clap_model, wav: np.ndarray, timestamps: List[float],
     return (raw - lo) / (hi - lo) if hi > lo else np.zeros_like(raw)
 
 
+# ── Passe 2b : PANNs CNN14 (alternative supervisee a CLAP) ──────────────────
+
+class _ConvBlock2d(nn.Module):
+    def __init__(self, in_ch, out_ch):
+        super().__init__()
+        self.conv1 = nn.Conv2d(in_ch, out_ch, 3, padding=1, bias=False)
+        self.conv2 = nn.Conv2d(out_ch, out_ch, 3, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(out_ch)
+        self.bn2 = nn.BatchNorm2d(out_ch)
+    def forward(self, x, pool=(2,2), pool_type='avg'):
+        x = F.relu_(self.bn1(self.conv1(x)))
+        x = F.relu_(self.bn2(self.conv2(x)))
+        if pool_type == 'avg':     x = F.avg_pool2d(x, kernel_size=pool)
+        elif pool_type == 'max':   x = F.max_pool2d(x, kernel_size=pool)
+        elif pool_type == 'avg+max': x = F.avg_pool2d(x, kernel_size=pool) + F.max_pool2d(x, kernel_size=pool)
+        return x
+
+
+class _STFT1d(nn.Module):
+    """STFT via 1D conv, miroir du spectrogram_extractor PANNs."""
+    def __init__(self, n_fft=512, hop=160):
+        super().__init__()
+        n_uniq = n_fft // 2 + 1
+        self.n_fft = n_fft
+        self.hop = hop
+        self.conv_real = nn.Conv1d(1, n_uniq, n_fft, stride=hop, padding=0, bias=False)
+        self.conv_imag = nn.Conv1d(1, n_uniq, n_fft, stride=hop, padding=0, bias=False)
+    def forward(self, w):
+        x = w.unsqueeze(1)
+        x = F.pad(x, (self.n_fft // 2, self.n_fft // 2), mode='reflect')
+        r = self.conv_real(x); i = self.conv_imag(x)
+        p = (r**2 + i**2).transpose(1, 2).unsqueeze(1)  # (B, 1, T, n_uniq)
+        return p
+
+
+class _LogMel(nn.Module):
+    """Mel filterbank + log10, miroir du logmel_extractor PANNs."""
+    def __init__(self, sr=16000, n_fft=512, n_mels=64, fmin=50, fmax=8000):
+        super().__init__()
+        melW = librosa.filters.mel(sr=sr, n_fft=n_fft, n_mels=n_mels, fmin=fmin, fmax=fmax).T
+        self.register_buffer('melW', torch.FloatTensor(melW))
+    def forward(self, p):
+        mel = torch.clamp(p @ self.melW, min=1e-10)
+        return 10.0 * torch.log10(mel)
+
+
+class _Cnn14(nn.Module):
+    """PANNs CNN14, 527 classes AudioSet, 16kHz."""
+    def __init__(self):
+        super().__init__()
+        self.spectrogram_extractor = nn.Module()
+        self.spectrogram_extractor.stft = _STFT1d(PANNS_N_FFT, PANNS_HOP_LEN)
+        self.logmel_extractor = _LogMel(SAMPLE_RATE, PANNS_N_FFT, PANNS_MEL_BINS,
+                                         PANNS_FMIN, PANNS_FMAX)
+        self.bn0         = nn.BatchNorm2d(PANNS_MEL_BINS)
+        self.conv_block1 = _ConvBlock2d(1, 64)
+        self.conv_block2 = _ConvBlock2d(64, 128)
+        self.conv_block3 = _ConvBlock2d(128, 256)
+        self.conv_block4 = _ConvBlock2d(256, 512)
+        self.conv_block5 = _ConvBlock2d(512, 1024)
+        self.conv_block6 = _ConvBlock2d(1024, 2048)
+        self.fc1         = nn.Linear(2048, 2048)
+        self.fc_audioset = nn.Linear(2048, 527)
+
+    def forward(self, w):
+        x = self.spectrogram_extractor.stft(w)     # (B,1,T,257)
+        x = self.logmel_extractor(x)               # (B,1,T,64)
+        x = x.transpose(1, 3); x = self.bn0(x); x = x.transpose(1, 3)
+        x = self.conv_block1(x, pool=(2,2))
+        x = F.dropout(x, 0.2, training=False)
+        x = self.conv_block2(x, pool=(2,2))
+        x = F.dropout(x, 0.2, training=False)
+        x = self.conv_block3(x, pool=(2,2))
+        x = F.dropout(x, 0.2, training=False)
+        x = self.conv_block4(x, pool=(2,2))
+        x = F.dropout(x, 0.2, training=False)
+        x = self.conv_block5(x, pool=(2,2))
+        x = F.dropout(x, 0.2, training=False)
+        x = self.conv_block6(x, pool=(1,1))
+        x = F.dropout(x, 0.2, training=False)
+        x = torch.mean(x, dim=3)
+        x1, _ = torch.max(x, dim=2); x2 = torch.mean(x, dim=2); x = x1 + x2
+        x = F.dropout(x, 0.5, training=False)
+        x = F.relu_(self.fc1(x))
+        x = F.dropout(x, 0.5, training=False)
+        return torch.sigmoid(self.fc_audioset(x))  # (B, 527)
+
+
+def load_panns(device: str):
+    """Charge PANNs CNN14 (checkpoint 16kHz) depuis PANNS_CKPT."""
+    if not os.path.exists(PANNS_CKPT):
+        raise FileNotFoundError(f"Checkpoint PANNs manquant: {PANNS_CKPT}")
+    model = _Cnn14()
+    ckpt = torch.load(PANNS_CKPT, map_location='cpu', weights_only=False)
+    missing, unexpected = model.load_state_dict(ckpt['model'], strict=False)
+    if missing:
+        print(f"  [PANNs WARN] Missing: {len(missing)} keys", flush=True)
+    model.eval().to(device)
+    print("  PANNs CNN14 charge (16kHz, 527 classes AudioSet)", flush=True)
+    return model
+
+
+def panns_score(panns_model, wav: np.ndarray, timestamps: List[float],
+                device: str) -> np.ndarray:
+    """
+    Pour chaque timestamp, scanne une fenetre PANNs_WIN_S autour avec hop PANNs_HOP_S.
+    Retourne le max P(Slap,smack) normalise par PANNS_SCALE, capee a 1.0.
+    Score: 1.0 = P>=0.10, 0 = silence/bruit.
+    """
+    win_n = int(PANNS_WIN_S * SAMPLE_RATE)
+    ctx_n = int(1.5 * SAMPLE_RATE)  # +/-1.5s de contexte autour du timestamp
+    hop_n = int(PANNS_HOP_S * SAMPLE_RATE)
+    n_wav = len(wav)
+
+    raw_scores = []
+    print(f"  Scoring {len(timestamps)} candidats PANNs CNN14...", flush=True)
+    for i, t in enumerate(timestamps):
+        c = int(t * SAMPLE_RATE)
+        seg_start = max(0, c - ctx_n)
+        seg_end   = min(n_wav, c + ctx_n + win_n)
+        seg = wav[seg_start:seg_end]
+
+        max_p = 0.0
+        for start in range(0, max(1, len(seg) - win_n + 1), hop_n):
+            chunk = seg[start:start + win_n]
+            if len(chunk) < win_n:
+                chunk = np.pad(chunk, (0, win_n - len(chunk)))
+            wav_t = torch.from_numpy(chunk.astype(np.float32)).unsqueeze(0).to(device)
+            with torch.no_grad():
+                p = panns_model(wav_t)[0, PANNS_SLAP_IDX].item()
+            max_p = max(max_p, p)
+
+        raw_scores.append(max_p)
+        if (i + 1) % 50 == 0 or i + 1 == len(timestamps):
+            print(f"    {i+1}/{len(timestamps)}...", flush=True)
+
+    raw = np.array(raw_scores)
+    # Normalisation calibree : P=PANNS_SCALE -> score=1.0
+    return np.clip(raw / PANNS_SCALE, 0.0, 1.0)
+
+
 # ── Passe 3 : DFN5B visuel statique ─────────────────────────────────────────
 
 def load_dfn5b(device: str):
@@ -241,46 +398,182 @@ def dfn5b_score(dfn_model, preprocess, tokenizer,
     pos_embs = text_embs[:len(VISUAL_POS_PROMPTS)]
     neg_embs = text_embs[len(VISUAL_POS_PROMPTS):]
 
-    all_imgs = []
     n = len(timestamps)
-    print(f"  Extraction {n * VISUAL_FRAMES} frames DFN5B...", flush=True)
-    for t in timestamps:
+    n_frames_total = n * VISUAL_FRAMES
+    print(f"  Extraction+encoding {n_frames_total} frames DFN5B (streaming)...", flush=True)
+
+    # Streaming : on extrait et encode par timestamp (pas d'accumulation RAM)
+    ts_scores = []
+    buf_imgs = []
+    buf_ts_idx = []   # (ts_index, frame_index)
+
+    def flush_buf():
+        if not buf_imgs:
+            return
+        batch = torch.stack(buf_imgs).to(device)
+        with torch.no_grad():
+            img_embs = F.normalize(dfn_model.encode_image(batch), dim=-1)
+        ps = (img_embs @ pos_embs.T).mean(dim=-1)
+        ns = (img_embs @ neg_embs.T).mean(dim=-1)
+        scores = (ps - 0.35 * ns).cpu().tolist()
+        del batch, img_embs
+        torch.cuda.empty_cache()
+        buf_imgs.clear()
+        return scores
+
+    per_ts = [[] for _ in range(n)]
+    done = 0
+    for ti, t in enumerate(timestamps):
+        frame_scores = []
+        buf = []
         for off in np.linspace(-0.5, 0.5, VISUAL_FRAMES):
             t_seek = max(0, t + off)
             with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as f:
                 tmp = f.name
             subprocess.run(
                 ["ffmpeg", "-y", "-ss", str(t_seek), "-i", video_path,
-                 "-vframes", "1", "-q:v", "2", tmp, "-loglevel", "error"],
+                 "-vframes", "1", "-q:v", "3", tmp, "-loglevel", "error"],
                 check=True
             )
             try:
-                all_imgs.append(preprocess(Image.open(tmp).convert("RGB")))
+                buf.append(preprocess(Image.open(tmp).convert("RGB")))
             except Exception:
-                all_imgs.append(torch.zeros(3, 378, 378))
+                buf.append(torch.zeros(3, 378, 378))
             os.unlink(tmp)
 
-    tensors = torch.stack(all_imgs)
-    raw_scores = []
-    print(f"  Encoding {len(tensors)} frames (batch={VISUAL_BATCH})...", flush=True)
-    for i in range(0, len(tensors), VISUAL_BATCH):
-        batch = tensors[i:i+VISUAL_BATCH].to(device)
+        # Encoder les VISUAL_FRAMES frames de ce timestamp
+        batch = torch.stack(buf).to(device)
         with torch.no_grad():
             img_embs = F.normalize(dfn_model.encode_image(batch), dim=-1)
-        pos_s = (img_embs @ pos_embs.T).mean(dim=-1)
-        neg_s = (img_embs @ neg_embs.T).mean(dim=-1)
-        raw_scores.extend((pos_s - 0.35 * neg_s).cpu().tolist())
-        if (i // VISUAL_BATCH + 1) % 4 == 0 or i + VISUAL_BATCH >= len(tensors):
-            print(f"    {min(i+VISUAL_BATCH, len(tensors))}/{len(tensors)}...", flush=True)
+        ps = (img_embs @ pos_embs.T).mean(dim=-1)
+        ns = (img_embs @ neg_embs.T).mean(dim=-1)
+        score = (ps - 0.35 * ns).mean().item()
+        del batch, img_embs, buf
+        torch.cuda.empty_cache()
+        per_ts.append(score)
+        done += VISUAL_FRAMES
+        if (ti + 1) % 20 == 0 or ti == n - 1:
+            print(f"    {done}/{n_frames_total}...", flush=True)
 
-    raw = np.array(raw_scores).reshape(n, VISUAL_FRAMES).mean(axis=1)
+    raw = np.array(per_ts[n:])  # skip empty init
     lo, hi = raw.min(), raw.max()
     return (raw - lo) / (hi - lo) if hi > lo else np.zeros(n)
 
 
+# ── Visual sweep 1fps ────────────────────────────────────────────────────────
+
+def visual_sweep(video_path: str, output_json: str,
+                 dfn_model, preprocess, tokenizer,
+                 device: str, fps_sweep: float = 1.0,
+                 min_score: float = 0.50,
+                 nms_gap_s: float = NMS_FINAL_GAP_S,
+                 sweep_cache: Optional[str] = None) -> List[float]:
+    """
+    Scan visuel complet du film a fps_sweep images/seconde via DFN5B.
+    Retourne liste de timestamps candidats (peaks visuels).
+    Cache les embeddings pour reutilisation (prompt-independent).
+    """
+    import open_clip
+
+    cache_path = sweep_cache or (output_json.replace(".json", SWEEP_CACHE_SUFFIX))
+
+    # ── Embeddings texte ──────────────────────────────────────────────────
+    all_texts = VISUAL_POS_PROMPTS + VISUAL_NEG_PROMPTS
+    tokens = tokenizer(all_texts).to(device)
+    with torch.no_grad():
+        text_embs = dfn_model.encode_text(tokens)
+    text_embs = F.normalize(text_embs, dim=-1)
+    pos_embs = text_embs[:len(VISUAL_POS_PROMPTS)]
+    neg_embs = text_embs[len(VISUAL_POS_PROMPTS):]
+
+    # ── Embeddings visuels (cache ou calcul) ──────────────────────────────
+    if os.path.exists(cache_path):
+        print(f"  Cache sweep trouve: {cache_path}", flush=True)
+        cache = torch.load(cache_path, weights_only=True)
+        img_embs_all = cache["embs"]        # (N, 512)
+        frame_times  = cache["frame_times"] # list[float]
+        print(f"  {len(frame_times)} frames chargees depuis cache", flush=True)
+    else:
+        from PIL import Image
+        # Dossier persistant a cote du cache (pas de TemporaryDirectory = pas d'OOM)
+        tmpdir = cache_path.replace(".pt", "_frames")
+        os.makedirs(tmpdir, exist_ok=True)
+
+        print(f"  Extraction frames {fps_sweep}fps (ffmpeg) -> {tmpdir}...", flush=True)
+        cmd = [
+            "ffmpeg", "-i", video_path,
+            "-vf", f"fps={fps_sweep}",
+            "-q:v", "4",
+            os.path.join(tmpdir, "f%06d.jpg"),
+            "-loglevel", "error"
+        ]
+        subprocess.run(cmd, check=True)
+
+        frame_files = sorted(f for f in os.listdir(tmpdir) if f.endswith(".jpg"))
+        n_frames = len(frame_files)
+        frame_times = [i / fps_sweep for i in range(n_frames)]
+        print(f"  {n_frames} frames extraites", flush=True)
+
+        # Encoder par batch — imgs_buf vide apres chaque batch (pas d'accumulation RAM)
+        print(f"  Encoding {n_frames} frames DFN5B (batch={VISUAL_BATCH})...", flush=True)
+        all_embs = []
+        imgs_buf = []
+        fnames_buf = []
+        for fi, fname in enumerate(frame_files):
+            fnames_buf.append(os.path.join(tmpdir, fname))
+            if len(fnames_buf) == VISUAL_BATCH or fi == n_frames - 1:
+                imgs = []
+                for fp in fnames_buf:
+                    try:
+                        imgs.append(preprocess(Image.open(fp).convert("RGB")))
+                    except Exception:
+                        imgs.append(torch.zeros(3, 378, 378))
+                batch = torch.stack(imgs).to(device)
+                with torch.no_grad():
+                    embs = F.normalize(dfn_model.encode_image(batch), dim=-1)
+                all_embs.append(embs.cpu())
+                del batch, imgs
+                fnames_buf = []
+                if (fi // VISUAL_BATCH + 1) % 20 == 0 or fi == n_frames - 1:
+                    print(f"    {fi+1}/{n_frames}...", flush=True)
+
+        img_embs_all = torch.cat(all_embs, dim=0)  # (N, 512)
+        del all_embs
+
+        # Sauvegarder cache
+        torch.save({"embs": img_embs_all, "frame_times": frame_times}, cache_path)
+        print(f"  Cache sweep sauvegarde: {cache_path}", flush=True)
+
+    # ── Scores visuels sur toute la timeline ─────────────────────────────
+    img_embs_all = img_embs_all.to(device)
+    pos_s = (img_embs_all @ pos_embs.T).mean(dim=-1)
+    neg_s = (img_embs_all @ neg_embs.T).mean(dim=-1)
+    raw_scores = (pos_s - 0.35 * neg_s).cpu().numpy()
+
+    # Normaliser
+    lo, hi = raw_scores.min(), raw_scores.max()
+    scores_norm = (raw_scores - lo) / (hi - lo) if hi > lo else raw_scores
+
+    # Trouver peaks (candidats visuels)
+    from scipy.signal import find_peaks
+    peaks, props = find_peaks(scores_norm, height=min_score, distance=int(nms_gap_s * fps_sweep))
+    peak_times = [frame_times[p] for p in peaks]
+    peak_scores = scores_norm[peaks]
+
+    print(f"  {len(peaks)} candidats visuels (seuil={min_score}, NMS={nms_gap_s}s)", flush=True)
+
+    # Afficher les top candidats
+    order = np.argsort(peak_scores)[::-1]
+    for i in order[:20]:
+        print(f"    {tc(peak_times[i])}  vis={peak_scores[i]:.3f}", flush=True)
+
+    return list(peak_times), list(peak_scores.tolist())
+
+
 # ── Passe 4 : MediaPipe wrist velocity + head snap ───────────────────────────
 
-POSE_MODEL_PATH = os.path.join(CKPT_DIR, "pose_landmarker_heavy.task")
+POSE_MODEL_PATH   = os.path.join(CKPT_DIR, "pose_landmarker_heavy.task")
+SWEEP_CACHE_SUFFIX = "_visual_sweep_cache.pt"   # cache embeddings DFN5B 1fps
 
 def mediapipe_motion_score(video_path: str, timestamps: List[float],
                             fps: float) -> Tuple[np.ndarray, List[dict]]:
@@ -448,10 +741,15 @@ def run_detection(
     nms_gap_s: float = NMS_FINAL_GAP_S,
     skip_visual: bool = False,
     skip_motion: bool = False,
+    visual_sweep_mode: bool = False,
+    sweep_cache: Optional[str] = None,
+    audio_model: str = "panns",   # "clap" | "panns" | "both"
 ):
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    audio_label = {"clap": "CLAP HTSAT-fused", "panns": "PANNs CNN14",
+                   "both": "CLAP+PANNs"}.get(audio_model, audio_model)
     print("=" * 70)
-    print("  Gifle Detector v3  |  CLAP + DFN5B + MediaPipe")
+    print(f"  Gifle Detector v3  |  {audio_label} + DFN5B + MediaPipe")
     print(f"  Video  : {video_path}")
     print(f"  Device : {device}")
     print("=" * 70, flush=True)
@@ -466,25 +764,68 @@ def run_detection(
     print(f"  Duree : {duration_s/60:.1f} min", flush=True)
     onset_times = detect_onsets(wav, top_k=top_onset_k)
 
-    # ── Passe 2 : CLAP ─────────────────────────────────────────────────────
-    print("\n[Passe 2] Classification audio LAION-CLAP HTSAT-fused...", flush=True)
-    clap_model = load_clap(device)
-    clap_scores = clap_score(clap_model, wav, onset_times, device)
-    del clap_model, wav
-    torch.cuda.empty_cache()
+    # ── Passe 2 : Audio classification (CLAP | PANNs | les deux) ──────────
+    use_clap  = audio_model in ("clap", "both")
+    use_panns = audio_model in ("panns", "both")
 
-    keep_mask = clap_scores >= audio_min
+    # Seuils adaptes selon modele
+    _audio_sure = PANNS_SURE if use_panns and not use_clap else audio_sure
+    _audio_min  = PANNS_MIN  if use_panns and not use_clap else audio_min
+
+    audio_scores = np.zeros(len(onset_times))
+
+    if use_clap:
+        print("\n[Passe 2] Classification audio LAION-CLAP HTSAT-fused...", flush=True)
+        clap_model = load_clap(device)
+        clap_s = clap_score(clap_model, wav, onset_times, device)
+        del clap_model
+        torch.cuda.empty_cache()
+        audio_scores = np.maximum(audio_scores, clap_s)
+
+    if use_panns:
+        print("\n[Passe 2] Classification audio PANNs CNN14 (AudioSet 'Slap,smack')...", flush=True)
+        panns_model = load_panns(device)
+        panns_s = panns_score(panns_model, wav, onset_times, device)
+        del panns_model
+        torch.cuda.empty_cache()
+        if use_clap:
+            # Ensemble : moyenne des deux scores normalises
+            audio_scores = 0.5 * audio_scores + 0.5 * panns_s
+        else:
+            audio_scores = panns_s
+
+    del wav
+
+    keep_mask = audio_scores >= _audio_min
     filt_ts = [t for t, k in zip(onset_times, keep_mask) if k]
-    filt_sc = clap_scores[keep_mask]
-    print(f"  {keep_mask.sum()}/{len(onset_times)} passes seuil audio ({audio_min})", flush=True)
+    filt_sc = audio_scores[keep_mask]
+    print(f"  {keep_mask.sum()}/{len(onset_times)} passes seuil audio ({_audio_min:.3f})", flush=True)
 
-    sure_mask  = filt_sc >= audio_sure
+    sure_mask  = filt_sc >= _audio_sure
     ambigu_mask = ~sure_mask
     sure_ts   = [t for t, k in zip(filt_ts, sure_mask) if k]
     sure_sc   = filt_sc[sure_mask]
     ambigu_ts = [t for t, k in zip(filt_ts, ambigu_mask) if k]
     ambigu_sc = filt_sc[ambigu_mask]
-    print(f"  -> {len(sure_ts)} surs (>={audio_sure}), {len(ambigu_ts)} ambigus", flush=True)
+    print(f"  -> {len(sure_ts)} surs (>={_audio_sure:.3f}), {len(ambigu_ts)} ambigus", flush=True)
+
+    # ── Visual sweep (optionnel) : DFN5B sur tout le film 1fps ────────────
+    sweep_extra_ts = []
+    sweep_extra_vs = []
+    dfn_model_ref  = [None]   # pour reutiliser si deja charge
+
+    if visual_sweep_mode:
+        print("\n[Sweep] Visual sweep 1fps DFN5B...", flush=True)
+        dfn_model, preprocess, tokenizer = load_dfn5b(device)
+        dfn_model_ref[0] = (dfn_model, preprocess, tokenizer)
+        sweep_ts, sweep_vs = visual_sweep(
+            video_path, output_json, dfn_model, preprocess, tokenizer,
+            device, fps_sweep=1.0, min_score=0.45,
+            nms_gap_s=nms_gap_s, sweep_cache=sweep_cache
+        )
+        sweep_extra_ts = sweep_ts
+        sweep_extra_vs = sweep_vs
+        print(f"  {len(sweep_ts)} candidats visuels supplementaires", flush=True)
 
     # ── Passe 3 : DFN5B ────────────────────────────────────────────────────
     vis_sure   = np.ones(len(sure_ts))
@@ -492,16 +833,24 @@ def run_detection(
 
     if not skip_visual and len(ambigu_ts) > 0:
         print(f"\n[Passe 3] DFN5B-CLIP visuel ({len(ambigu_ts)} ambigus)...", flush=True)
-        dfn_model, preprocess, tokenizer = load_dfn5b(device)
+        if dfn_model_ref[0] is not None:
+            dfn_model, preprocess, tokenizer = dfn_model_ref[0]
+        else:
+            dfn_model, preprocess, tokenizer = load_dfn5b(device)
         vis_ambigu = dfn5b_score(dfn_model, preprocess, tokenizer,
                                   video_path, ambigu_ts, device)
         del dfn_model
+        dfn_model_ref[0] = None
         torch.cuda.empty_cache()
 
     # Fusion provisoire pour selectionner candidats pour MediaPipe
-    all_ts = sure_ts + ambigu_ts
-    all_audio = np.concatenate([sure_sc, ambigu_sc])
-    all_visual = np.concatenate([vis_sure, vis_ambigu])
+    # Inclure sweep candidats (visuels seuls, audio=0)
+    sweep_audio = np.zeros(len(sweep_extra_ts))
+    sweep_visual = np.array(sweep_extra_vs) if sweep_extra_vs else np.zeros(0)
+
+    all_ts     = sure_ts + ambigu_ts + sweep_extra_ts
+    all_audio  = np.concatenate([sure_sc, ambigu_sc, sweep_audio])
+    all_visual = np.concatenate([vis_sure, vis_ambigu, sweep_visual])
 
     # Score pre-MediaPipe
     pre_scores = audio_weight * all_audio + visual_weight * all_visual
@@ -560,18 +909,23 @@ def run_detection(
               f"  motion={d['motion_score']:.3f}  {tag}", flush=True)
 
     # ── JSON ───────────────────────────────────────────────────────────────
+    _model_audio_name = {
+        "clap":  "LAION-CLAP-HTSAT-fused",
+        "panns": "PANNs-CNN14-16k-AudioSet467",
+        "both":  "LAION-CLAP-HTSAT-fused + PANNs-CNN14",
+    }.get(audio_model, audio_model)
     result = {
         "video": video_path,
         "duration_s": round(duration_s, 1),
-        "model_audio": "LAION-CLAP-HTSAT-fused",
+        "model_audio": _model_audio_name,
         "model_visual": "DFN5B-CLIP-ViT-H-14-378",
         "model_motion": "MediaPipe Pose (complexity=2)",
         "weights": {"audio": audio_weight, "visual": visual_weight, "motion": motion_weight},
-        "thresholds": {"audio_sure": audio_sure, "audio_min": audio_min,
+        "thresholds": {"audio_sure": _audio_sure, "audio_min": _audio_min,
                        "final_min": min_final_score, "nms_gap_s": nms_gap_s},
         "stats": {
             "onset_candidates": len(onset_times),
-            "after_clap": int(keep_mask.sum()),
+            "after_audio": int(keep_mask.sum()),
             "after_visual_filter": len(mp_ts),
             "final_detections": len(detections),
         },
@@ -608,6 +962,13 @@ def main():
     parser.add_argument("--motion-weight", type=float, default=0.35)
     parser.add_argument("--skip-visual", action="store_true")
     parser.add_argument("--skip-motion", action="store_true")
+    parser.add_argument("--visual-sweep", action="store_true", dest="visual_sweep",
+                        help="Scan visuel complet 1fps DFN5B (garantit detection gifles visibles)")
+    parser.add_argument("--sweep-cache", default=None, dest="sweep_cache",
+                        help="Cache embeddings visuels sweep (.pt) pour reutilisation")
+    parser.add_argument("--audio-model", default="panns", dest="audio_model",
+                        choices=["clap", "panns", "both"],
+                        help="Modele audio: clap (zero-shot), panns (supervise AudioSet), both (ensemble)")
     args = parser.parse_args()
 
     run_detection(
@@ -624,6 +985,9 @@ def main():
         nms_gap_s=args.nms_gap,
         skip_visual=args.skip_visual,
         skip_motion=args.skip_motion,
+        visual_sweep_mode=args.visual_sweep,
+        sweep_cache=args.sweep_cache,
+        audio_model=args.audio_model,
     )
 
 

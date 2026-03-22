@@ -1,0 +1,2626 @@
+{
+  "video": "F:/[kr]/copie_de_[kr]_D/kim_ki_duk/Pieta.2012.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4",
+  "duration_s": 6168.7,
+  "model_audio": "PANNs-CNN14-16k-AudioSet467",
+  "model_visual": "DFN5B-CLIP-ViT-H-14-378",
+  "model_motion": "MediaPipe Pose (complexity=2)",
+  "weights": {
+    "audio": 0.35,
+    "visual": 0.3,
+    "motion": 0.35
+  },
+  "thresholds": {
+    "audio_sure": 0.45,
+    "audio_min": 0.08,
+    "final_min": 0.35,
+    "nms_gap_s": 3.0
+  },
+  "stats": {
+    "onset_candidates": 1000,
+    "after_audio": 127,
+    "after_visual_filter": 49,
+    "final_detections": 260
+  },
+  "detections": [
+    {
+      "time_s": 46.0,
+      "timecode": "00:00:46",
+      "audio_score": 0.0,
+      "visual_score": 0.783,
+      "motion_score": 0.0,
+      "final_score": 0.372,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 55.0,
+      "timecode": "00:00:55",
+      "audio_score": 0.0,
+      "visual_score": 0.848,
+      "motion_score": 0.0,
+      "final_score": 0.403,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 213.0,
+      "timecode": "00:03:33",
+      "audio_score": 0.0,
+      "visual_score": 0.818,
+      "motion_score": 0.0,
+      "final_score": 0.389,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 257.0,
+      "timecode": "00:04:17",
+      "audio_score": 0.0,
+      "visual_score": 0.789,
+      "motion_score": 0.0,
+      "final_score": 0.375,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 306.0,
+      "timecode": "00:05:06",
+      "audio_score": 0.0,
+      "visual_score": 0.807,
+      "motion_score": 0.0,
+      "final_score": 0.383,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 313.0,
+      "timecode": "00:05:13",
+      "audio_score": 0.0,
+      "visual_score": 0.814,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 316.0,
+      "timecode": "00:05:16",
+      "audio_score": 0.0,
+      "visual_score": 0.791,
+      "motion_score": 0.0,
+      "final_score": 0.376,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 352.0,
+      "timecode": "00:05:52",
+      "audio_score": 0.0,
+      "visual_score": 0.756,
+      "motion_score": 0.0,
+      "final_score": 0.359,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 364.0,
+      "timecode": "00:06:04",
+      "audio_score": 0.0,
+      "visual_score": 0.745,
+      "motion_score": 0.0,
+      "final_score": 0.354,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 370.0,
+      "timecode": "00:06:10",
+      "audio_score": 0.0,
+      "visual_score": 0.767,
+      "motion_score": 0.0,
+      "final_score": 0.364,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 380.0,
+      "timecode": "00:06:20",
+      "audio_score": 0.0,
+      "visual_score": 0.938,
+      "motion_score": 0.0,
+      "final_score": 0.446,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 389.408,
+      "timecode": "00:06:29",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 395.104,
+      "timecode": "00:06:35",
+      "audio_score": 0.463,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.718,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 420.0,
+      "timecode": "00:07:00",
+      "audio_score": 0.0,
+      "visual_score": 0.821,
+      "motion_score": 0.0,
+      "final_score": 0.39,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 426.0,
+      "timecode": "00:07:06",
+      "audio_score": 0.0,
+      "visual_score": 0.738,
+      "motion_score": 0.0,
+      "final_score": 0.351,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 446.0,
+      "timecode": "00:07:26",
+      "audio_score": 0.0,
+      "visual_score": 0.737,
+      "motion_score": 0.0,
+      "final_score": 0.35,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 465.408,
+      "timecode": "00:07:45",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 469.632,
+      "timecode": "00:07:49",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 472.864,
+      "timecode": "00:07:52",
+      "audio_score": 0.881,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.937,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 500.0,
+      "timecode": "00:08:20",
+      "audio_score": 0.0,
+      "visual_score": 0.883,
+      "motion_score": 0.0,
+      "final_score": 0.419,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 504.0,
+      "timecode": "00:08:24",
+      "audio_score": 0.0,
+      "visual_score": 0.841,
+      "motion_score": 0.0,
+      "final_score": 0.399,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 507.0,
+      "timecode": "00:08:27",
+      "audio_score": 0.0,
+      "visual_score": 0.753,
+      "motion_score": 0.0,
+      "final_score": 0.358,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 513.6,
+      "timecode": "00:08:33",
+      "audio_score": 0.322,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.644,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 519.0,
+      "timecode": "00:08:39",
+      "audio_score": 0.0,
+      "visual_score": 0.847,
+      "motion_score": 0.0,
+      "final_score": 0.402,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 527.0,
+      "timecode": "00:08:47",
+      "audio_score": 0.0,
+      "visual_score": 0.797,
+      "motion_score": 0.0,
+      "final_score": 0.379,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 530.0,
+      "timecode": "00:08:50",
+      "audio_score": 0.0,
+      "visual_score": 0.815,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 536.0,
+      "timecode": "00:08:56",
+      "audio_score": 0.0,
+      "visual_score": 0.788,
+      "motion_score": 0.0,
+      "final_score": 0.374,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 595.0,
+      "timecode": "00:09:55",
+      "audio_score": 0.0,
+      "visual_score": 0.829,
+      "motion_score": 0.0,
+      "final_score": 0.394,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 603.0,
+      "timecode": "00:10:03",
+      "audio_score": 0.0,
+      "visual_score": 0.849,
+      "motion_score": 0.0,
+      "final_score": 0.403,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 634.0,
+      "timecode": "00:10:34",
+      "audio_score": 0.0,
+      "visual_score": 0.796,
+      "motion_score": 0.0,
+      "final_score": 0.378,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 637.0,
+      "timecode": "00:10:37",
+      "audio_score": 0.0,
+      "visual_score": 0.818,
+      "motion_score": 0.0,
+      "final_score": 0.389,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 738.0,
+      "timecode": "00:12:18",
+      "audio_score": 0.0,
+      "visual_score": 0.811,
+      "motion_score": 0.0,
+      "final_score": 0.385,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 919.872,
+      "timecode": "00:15:19",
+      "audio_score": 0.686,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.835,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 930.24,
+      "timecode": "00:15:30",
+      "audio_score": 0.274,
+      "visual_score": 0.563,
+      "motion_score": 0.0,
+      "final_score": 0.412,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 934.0,
+      "timecode": "00:15:34",
+      "audio_score": 0.0,
+      "visual_score": 0.769,
+      "motion_score": 0.0,
+      "final_score": 0.365,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 941.0,
+      "timecode": "00:15:41",
+      "audio_score": 0.0,
+      "visual_score": 0.745,
+      "motion_score": 0.0,
+      "final_score": 0.354,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 994.0,
+      "timecode": "00:16:34",
+      "audio_score": 0.0,
+      "visual_score": 0.751,
+      "motion_score": 0.0,
+      "final_score": 0.357,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 999.0,
+      "timecode": "00:16:39",
+      "audio_score": 0.0,
+      "visual_score": 0.883,
+      "motion_score": 0.0,
+      "final_score": 0.419,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1004.0,
+      "timecode": "00:16:44",
+      "audio_score": 0.0,
+      "visual_score": 0.977,
+      "motion_score": 0.0,
+      "final_score": 0.464,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1059.0,
+      "timecode": "00:17:39",
+      "audio_score": 0.0,
+      "visual_score": 0.751,
+      "motion_score": 0.0,
+      "final_score": 0.357,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1062.944,
+      "timecode": "00:17:42",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1067.968,
+      "timecode": "00:17:47",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1072.928,
+      "timecode": "00:17:52",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1125.0,
+      "timecode": "00:18:45",
+      "audio_score": 0.0,
+      "visual_score": 0.854,
+      "motion_score": 0.0,
+      "final_score": 0.406,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1143.0,
+      "timecode": "00:19:03",
+      "audio_score": 0.0,
+      "visual_score": 0.836,
+      "motion_score": 0.0,
+      "final_score": 0.397,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1150.0,
+      "timecode": "00:19:10",
+      "audio_score": 0.0,
+      "visual_score": 0.9,
+      "motion_score": 0.0,
+      "final_score": 0.428,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1157.0,
+      "timecode": "00:19:17",
+      "audio_score": 0.0,
+      "visual_score": 0.889,
+      "motion_score": 0.0,
+      "final_score": 0.422,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1189.0,
+      "timecode": "00:19:49",
+      "audio_score": 0.0,
+      "visual_score": 0.96,
+      "motion_score": 0.0,
+      "final_score": 0.456,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1194.0,
+      "timecode": "00:19:54",
+      "audio_score": 0.0,
+      "visual_score": 0.86,
+      "motion_score": 0.0,
+      "final_score": 0.409,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1201.0,
+      "timecode": "00:20:01",
+      "audio_score": 0.0,
+      "visual_score": 0.783,
+      "motion_score": 0.0,
+      "final_score": 0.372,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1214.0,
+      "timecode": "00:20:14",
+      "audio_score": 0.0,
+      "visual_score": 0.777,
+      "motion_score": 0.0,
+      "final_score": 0.369,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1218.0,
+      "timecode": "00:20:18",
+      "audio_score": 0.0,
+      "visual_score": 0.748,
+      "motion_score": 0.0,
+      "final_score": 0.355,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1232.64,
+      "timecode": "00:20:32",
+      "audio_score": 0.433,
+      "visual_score": 0.31,
+      "motion_score": 0.0,
+      "final_score": 0.375,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1267.648,
+      "timecode": "00:21:07",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1531.488,
+      "timecode": "00:25:31",
+      "audio_score": 0.307,
+      "visual_score": 0.517,
+      "motion_score": 0.0,
+      "final_score": 0.407,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1537.664,
+      "timecode": "00:25:37",
+      "audio_score": 0.562,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.77,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1647.0,
+      "timecode": "00:27:27",
+      "audio_score": 0.0,
+      "visual_score": 0.75,
+      "motion_score": 0.0,
+      "final_score": 0.356,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1651.0,
+      "timecode": "00:27:31",
+      "audio_score": 0.0,
+      "visual_score": 0.814,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1654.0,
+      "timecode": "00:27:34",
+      "audio_score": 0.0,
+      "visual_score": 0.779,
+      "motion_score": 0.0,
+      "final_score": 0.37,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1658.0,
+      "timecode": "00:27:38",
+      "audio_score": 0.0,
+      "visual_score": 0.819,
+      "motion_score": 0.0,
+      "final_score": 0.389,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1663.0,
+      "timecode": "00:27:43",
+      "audio_score": 0.0,
+      "visual_score": 0.858,
+      "motion_score": 0.0,
+      "final_score": 0.408,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1666.0,
+      "timecode": "00:27:46",
+      "audio_score": 0.0,
+      "visual_score": 0.867,
+      "motion_score": 0.0,
+      "final_score": 0.412,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1669.0,
+      "timecode": "00:27:49",
+      "audio_score": 0.0,
+      "visual_score": 0.849,
+      "motion_score": 0.0,
+      "final_score": 0.403,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1675.0,
+      "timecode": "00:27:55",
+      "audio_score": 0.0,
+      "visual_score": 0.814,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1681.0,
+      "timecode": "00:28:01",
+      "audio_score": 0.0,
+      "visual_score": 0.813,
+      "motion_score": 0.0,
+      "final_score": 0.386,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1686.0,
+      "timecode": "00:28:06",
+      "audio_score": 0.0,
+      "visual_score": 0.804,
+      "motion_score": 0.0,
+      "final_score": 0.382,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1691.0,
+      "timecode": "00:28:11",
+      "audio_score": 0.0,
+      "visual_score": 0.819,
+      "motion_score": 0.0,
+      "final_score": 0.389,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1696.0,
+      "timecode": "00:28:16",
+      "audio_score": 0.0,
+      "visual_score": 0.805,
+      "motion_score": 0.0,
+      "final_score": 0.383,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1699.0,
+      "timecode": "00:28:19",
+      "audio_score": 0.0,
+      "visual_score": 0.793,
+      "motion_score": 0.0,
+      "final_score": 0.377,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1720.0,
+      "timecode": "00:28:40",
+      "audio_score": 0.0,
+      "visual_score": 0.739,
+      "motion_score": 0.0,
+      "final_score": 0.351,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1818.0,
+      "timecode": "00:30:18",
+      "audio_score": 0.0,
+      "visual_score": 0.765,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1849.0,
+      "timecode": "00:30:49",
+      "audio_score": 0.0,
+      "visual_score": 0.761,
+      "motion_score": 0.0,
+      "final_score": 0.361,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1864.0,
+      "timecode": "00:31:04",
+      "audio_score": 0.0,
+      "visual_score": 0.772,
+      "motion_score": 0.0,
+      "final_score": 0.366,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1883.0,
+      "timecode": "00:31:23",
+      "audio_score": 0.0,
+      "visual_score": 0.739,
+      "motion_score": 0.0,
+      "final_score": 0.351,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1909.0,
+      "timecode": "00:31:49",
+      "audio_score": 0.0,
+      "visual_score": 0.777,
+      "motion_score": 0.0,
+      "final_score": 0.369,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1916.0,
+      "timecode": "00:31:56",
+      "audio_score": 0.0,
+      "visual_score": 0.803,
+      "motion_score": 0.0,
+      "final_score": 0.381,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1919.0,
+      "timecode": "00:31:59",
+      "audio_score": 0.0,
+      "visual_score": 0.831,
+      "motion_score": 0.0,
+      "final_score": 0.395,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1923.0,
+      "timecode": "00:32:03",
+      "audio_score": 0.0,
+      "visual_score": 0.876,
+      "motion_score": 0.0,
+      "final_score": 0.416,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1926.0,
+      "timecode": "00:32:06",
+      "audio_score": 0.0,
+      "visual_score": 0.912,
+      "motion_score": 0.0,
+      "final_score": 0.433,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1930.0,
+      "timecode": "00:32:10",
+      "audio_score": 0.0,
+      "visual_score": 0.917,
+      "motion_score": 0.0,
+      "final_score": 0.435,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1943.0,
+      "timecode": "00:32:23",
+      "audio_score": 0.0,
+      "visual_score": 0.855,
+      "motion_score": 0.0,
+      "final_score": 0.406,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1947.0,
+      "timecode": "00:32:27",
+      "audio_score": 0.0,
+      "visual_score": 0.815,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1951.0,
+      "timecode": "00:32:31",
+      "audio_score": 0.0,
+      "visual_score": 0.803,
+      "motion_score": 0.0,
+      "final_score": 0.382,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1954.0,
+      "timecode": "00:32:34",
+      "audio_score": 0.0,
+      "visual_score": 0.775,
+      "motion_score": 0.0,
+      "final_score": 0.368,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1958.0,
+      "timecode": "00:32:38",
+      "audio_score": 0.0,
+      "visual_score": 0.772,
+      "motion_score": 0.0,
+      "final_score": 0.367,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1964.0,
+      "timecode": "00:32:44",
+      "audio_score": 0.0,
+      "visual_score": 0.769,
+      "motion_score": 0.0,
+      "final_score": 0.365,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1971.0,
+      "timecode": "00:32:51",
+      "audio_score": 0.0,
+      "visual_score": 0.804,
+      "motion_score": 0.0,
+      "final_score": 0.382,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1974.0,
+      "timecode": "00:32:54",
+      "audio_score": 0.0,
+      "visual_score": 0.777,
+      "motion_score": 0.0,
+      "final_score": 0.369,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1978.0,
+      "timecode": "00:32:58",
+      "audio_score": 0.0,
+      "visual_score": 0.748,
+      "motion_score": 0.0,
+      "final_score": 0.356,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 1995.0,
+      "timecode": "00:33:15",
+      "audio_score": 0.0,
+      "visual_score": 0.759,
+      "motion_score": 0.0,
+      "final_score": 0.361,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2004.0,
+      "timecode": "00:33:24",
+      "audio_score": 0.0,
+      "visual_score": 0.766,
+      "motion_score": 0.0,
+      "final_score": 0.364,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2007.0,
+      "timecode": "00:33:27",
+      "audio_score": 0.0,
+      "visual_score": 0.803,
+      "motion_score": 0.0,
+      "final_score": 0.381,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2017.0,
+      "timecode": "00:33:37",
+      "audio_score": 0.0,
+      "visual_score": 0.759,
+      "motion_score": 0.0,
+      "final_score": 0.36,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2022.0,
+      "timecode": "00:33:42",
+      "audio_score": 0.0,
+      "visual_score": 0.847,
+      "motion_score": 0.0,
+      "final_score": 0.402,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2028.0,
+      "timecode": "00:33:48",
+      "audio_score": 0.0,
+      "visual_score": 0.902,
+      "motion_score": 0.0,
+      "final_score": 0.429,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2033.0,
+      "timecode": "00:33:53",
+      "audio_score": 0.0,
+      "visual_score": 0.844,
+      "motion_score": 0.0,
+      "final_score": 0.401,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2037.0,
+      "timecode": "00:33:57",
+      "audio_score": 0.0,
+      "visual_score": 0.813,
+      "motion_score": 0.0,
+      "final_score": 0.386,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2040.0,
+      "timecode": "00:34:00",
+      "audio_score": 0.0,
+      "visual_score": 0.782,
+      "motion_score": 0.0,
+      "final_score": 0.371,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2043.456,
+      "timecode": "00:34:03",
+      "audio_score": 0.234,
+      "visual_score": 0.834,
+      "motion_score": 0.0,
+      "final_score": 0.519,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2051.0,
+      "timecode": "00:34:11",
+      "audio_score": 0.0,
+      "visual_score": 0.863,
+      "motion_score": 0.0,
+      "final_score": 0.41,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2054.0,
+      "timecode": "00:34:14",
+      "audio_score": 0.0,
+      "visual_score": 0.893,
+      "motion_score": 0.0,
+      "final_score": 0.424,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2057.0,
+      "timecode": "00:34:17",
+      "audio_score": 0.0,
+      "visual_score": 0.915,
+      "motion_score": 0.0,
+      "final_score": 0.435,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2060.0,
+      "timecode": "00:34:20",
+      "audio_score": 0.0,
+      "visual_score": 0.867,
+      "motion_score": 0.0,
+      "final_score": 0.412,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2071.84,
+      "timecode": "00:34:31",
+      "audio_score": 0.091,
+      "visual_score": 0.823,
+      "motion_score": 0.0,
+      "final_score": 0.439,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2075.0,
+      "timecode": "00:34:35",
+      "audio_score": 0.0,
+      "visual_score": 0.903,
+      "motion_score": 0.0,
+      "final_score": 0.429,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2078.0,
+      "timecode": "00:34:38",
+      "audio_score": 0.0,
+      "visual_score": 0.849,
+      "motion_score": 0.0,
+      "final_score": 0.403,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2082.0,
+      "timecode": "00:34:42",
+      "audio_score": 0.0,
+      "visual_score": 0.823,
+      "motion_score": 0.0,
+      "final_score": 0.391,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2087.0,
+      "timecode": "00:34:47",
+      "audio_score": 0.0,
+      "visual_score": 0.805,
+      "motion_score": 0.0,
+      "final_score": 0.383,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2093.0,
+      "timecode": "00:34:53",
+      "audio_score": 0.0,
+      "visual_score": 0.818,
+      "motion_score": 0.0,
+      "final_score": 0.389,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2098.0,
+      "timecode": "00:34:58",
+      "audio_score": 0.0,
+      "visual_score": 0.864,
+      "motion_score": 0.0,
+      "final_score": 0.41,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2104.0,
+      "timecode": "00:35:04",
+      "audio_score": 0.0,
+      "visual_score": 0.807,
+      "motion_score": 0.0,
+      "final_score": 0.384,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2107.0,
+      "timecode": "00:35:07",
+      "audio_score": 0.0,
+      "visual_score": 0.875,
+      "motion_score": 0.0,
+      "final_score": 0.416,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2110.0,
+      "timecode": "00:35:10",
+      "audio_score": 0.0,
+      "visual_score": 0.831,
+      "motion_score": 0.0,
+      "final_score": 0.395,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2116.0,
+      "timecode": "00:35:16",
+      "audio_score": 0.0,
+      "visual_score": 0.797,
+      "motion_score": 0.0,
+      "final_score": 0.379,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2119.0,
+      "timecode": "00:35:19",
+      "audio_score": 0.0,
+      "visual_score": 0.826,
+      "motion_score": 0.0,
+      "final_score": 0.392,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2123.0,
+      "timecode": "00:35:23",
+      "audio_score": 0.0,
+      "visual_score": 0.839,
+      "motion_score": 0.0,
+      "final_score": 0.399,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2131.0,
+      "timecode": "00:35:31",
+      "audio_score": 0.0,
+      "visual_score": 0.803,
+      "motion_score": 0.0,
+      "final_score": 0.382,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2134.0,
+      "timecode": "00:35:34",
+      "audio_score": 0.0,
+      "visual_score": 0.787,
+      "motion_score": 0.0,
+      "final_score": 0.374,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2138.0,
+      "timecode": "00:35:38",
+      "audio_score": 0.0,
+      "visual_score": 0.801,
+      "motion_score": 0.0,
+      "final_score": 0.38,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2150.0,
+      "timecode": "00:35:50",
+      "audio_score": 0.0,
+      "visual_score": 0.814,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2178.0,
+      "timecode": "00:36:18",
+      "audio_score": 0.0,
+      "visual_score": 0.848,
+      "motion_score": 0.0,
+      "final_score": 0.403,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2182.0,
+      "timecode": "00:36:22",
+      "audio_score": 0.0,
+      "visual_score": 0.86,
+      "motion_score": 0.0,
+      "final_score": 0.409,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2191.0,
+      "timecode": "00:36:31",
+      "audio_score": 0.0,
+      "visual_score": 0.776,
+      "motion_score": 0.0,
+      "final_score": 0.369,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2197.0,
+      "timecode": "00:36:37",
+      "audio_score": 0.0,
+      "visual_score": 0.78,
+      "motion_score": 0.0,
+      "final_score": 0.37,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2200.0,
+      "timecode": "00:36:40",
+      "audio_score": 0.0,
+      "visual_score": 0.81,
+      "motion_score": 0.0,
+      "final_score": 0.385,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2205.0,
+      "timecode": "00:36:45",
+      "audio_score": 0.0,
+      "visual_score": 0.771,
+      "motion_score": 0.0,
+      "final_score": 0.366,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2213.0,
+      "timecode": "00:36:53",
+      "audio_score": 0.0,
+      "visual_score": 0.77,
+      "motion_score": 0.0,
+      "final_score": 0.366,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2220.0,
+      "timecode": "00:37:00",
+      "audio_score": 0.0,
+      "visual_score": 0.802,
+      "motion_score": 0.0,
+      "final_score": 0.381,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2243.0,
+      "timecode": "00:37:23",
+      "audio_score": 0.0,
+      "visual_score": 0.747,
+      "motion_score": 0.0,
+      "final_score": 0.355,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2248.0,
+      "timecode": "00:37:28",
+      "audio_score": 0.0,
+      "visual_score": 0.756,
+      "motion_score": 0.0,
+      "final_score": 0.359,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2337.0,
+      "timecode": "00:38:57",
+      "audio_score": 0.0,
+      "visual_score": 0.739,
+      "motion_score": 0.0,
+      "final_score": 0.351,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2340.0,
+      "timecode": "00:39:00",
+      "audio_score": 0.0,
+      "visual_score": 0.761,
+      "motion_score": 0.0,
+      "final_score": 0.361,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2516.0,
+      "timecode": "00:41:56",
+      "audio_score": 0.0,
+      "visual_score": 0.794,
+      "motion_score": 0.0,
+      "final_score": 0.377,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2552.0,
+      "timecode": "00:42:32",
+      "audio_score": 0.0,
+      "visual_score": 0.764,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2557.0,
+      "timecode": "00:42:37",
+      "audio_score": 0.0,
+      "visual_score": 0.786,
+      "motion_score": 0.0,
+      "final_score": 0.373,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2563.0,
+      "timecode": "00:42:43",
+      "audio_score": 0.0,
+      "visual_score": 0.803,
+      "motion_score": 0.0,
+      "final_score": 0.381,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2566.0,
+      "timecode": "00:42:46",
+      "audio_score": 0.0,
+      "visual_score": 0.772,
+      "motion_score": 0.0,
+      "final_score": 0.367,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2571.0,
+      "timecode": "00:42:51",
+      "audio_score": 0.0,
+      "visual_score": 0.764,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2710.0,
+      "timecode": "00:45:10",
+      "audio_score": 0.0,
+      "visual_score": 0.93,
+      "motion_score": 0.0,
+      "final_score": 0.442,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2721.0,
+      "timecode": "00:45:21",
+      "audio_score": 0.0,
+      "visual_score": 0.818,
+      "motion_score": 0.0,
+      "final_score": 0.389,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2726.0,
+      "timecode": "00:45:26",
+      "audio_score": 0.0,
+      "visual_score": 0.848,
+      "motion_score": 0.0,
+      "final_score": 0.403,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2736.0,
+      "timecode": "00:45:36",
+      "audio_score": 0.0,
+      "visual_score": 0.92,
+      "motion_score": 0.0,
+      "final_score": 0.437,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2757.0,
+      "timecode": "00:45:57",
+      "audio_score": 0.0,
+      "visual_score": 0.844,
+      "motion_score": 0.0,
+      "final_score": 0.401,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 2782.0,
+      "timecode": "00:46:22",
+      "audio_score": 0.0,
+      "visual_score": 0.741,
+      "motion_score": 0.0,
+      "final_score": 0.352,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3298.0,
+      "timecode": "00:54:58",
+      "audio_score": 0.0,
+      "visual_score": 0.968,
+      "motion_score": 0.0,
+      "final_score": 0.46,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3323.0,
+      "timecode": "00:55:23",
+      "audio_score": 0.0,
+      "visual_score": 0.794,
+      "motion_score": 0.0,
+      "final_score": 0.377,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3330.0,
+      "timecode": "00:55:30",
+      "audio_score": 0.0,
+      "visual_score": 0.779,
+      "motion_score": 0.0,
+      "final_score": 0.37,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3387.04,
+      "timecode": "00:56:27",
+      "audio_score": 0.53,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.753,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3390.4,
+      "timecode": "00:56:30",
+      "audio_score": 0.874,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.934,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3415.0,
+      "timecode": "00:56:55",
+      "audio_score": 0.0,
+      "visual_score": 0.778,
+      "motion_score": 0.0,
+      "final_score": 0.37,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3437.0,
+      "timecode": "00:57:17",
+      "audio_score": 0.0,
+      "visual_score": 0.816,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3441.0,
+      "timecode": "00:57:21",
+      "audio_score": 0.0,
+      "visual_score": 0.796,
+      "motion_score": 0.0,
+      "final_score": 0.378,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3445.0,
+      "timecode": "00:57:25",
+      "audio_score": 0.0,
+      "visual_score": 0.809,
+      "motion_score": 0.0,
+      "final_score": 0.384,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3455.0,
+      "timecode": "00:57:35",
+      "audio_score": 0.0,
+      "visual_score": 0.899,
+      "motion_score": 0.0,
+      "final_score": 0.427,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3458.0,
+      "timecode": "00:57:38",
+      "audio_score": 0.0,
+      "visual_score": 0.862,
+      "motion_score": 0.0,
+      "final_score": 0.409,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3461.0,
+      "timecode": "00:57:41",
+      "audio_score": 0.0,
+      "visual_score": 0.791,
+      "motion_score": 0.0,
+      "final_score": 0.376,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3465.0,
+      "timecode": "00:57:45",
+      "audio_score": 0.0,
+      "visual_score": 0.793,
+      "motion_score": 0.0,
+      "final_score": 0.377,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3473.0,
+      "timecode": "00:57:53",
+      "audio_score": 0.0,
+      "visual_score": 0.744,
+      "motion_score": 0.0,
+      "final_score": 0.353,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3476.0,
+      "timecode": "00:57:56",
+      "audio_score": 0.0,
+      "visual_score": 0.764,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3480.0,
+      "timecode": "00:58:00",
+      "audio_score": 0.0,
+      "visual_score": 0.808,
+      "motion_score": 0.0,
+      "final_score": 0.384,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3484.0,
+      "timecode": "00:58:04",
+      "audio_score": 0.0,
+      "visual_score": 0.768,
+      "motion_score": 0.0,
+      "final_score": 0.365,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3494.0,
+      "timecode": "00:58:14",
+      "audio_score": 0.0,
+      "visual_score": 0.789,
+      "motion_score": 0.0,
+      "final_score": 0.375,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3504.0,
+      "timecode": "00:58:24",
+      "audio_score": 0.0,
+      "visual_score": 0.774,
+      "motion_score": 0.0,
+      "final_score": 0.368,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3508.0,
+      "timecode": "00:58:28",
+      "audio_score": 0.0,
+      "visual_score": 0.79,
+      "motion_score": 0.0,
+      "final_score": 0.375,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3511.0,
+      "timecode": "00:58:31",
+      "audio_score": 0.0,
+      "visual_score": 0.862,
+      "motion_score": 0.0,
+      "final_score": 0.409,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3518.0,
+      "timecode": "00:58:38",
+      "audio_score": 0.0,
+      "visual_score": 0.867,
+      "motion_score": 0.0,
+      "final_score": 0.412,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3523.392,
+      "timecode": "00:58:43",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3534.0,
+      "timecode": "00:58:54",
+      "audio_score": 0.0,
+      "visual_score": 0.743,
+      "motion_score": 0.0,
+      "final_score": 0.353,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3538.0,
+      "timecode": "00:58:58",
+      "audio_score": 0.0,
+      "visual_score": 0.746,
+      "motion_score": 0.0,
+      "final_score": 0.354,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3605.0,
+      "timecode": "01:00:05",
+      "audio_score": 0.0,
+      "visual_score": 0.805,
+      "motion_score": 0.0,
+      "final_score": 0.382,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3608.0,
+      "timecode": "01:00:08",
+      "audio_score": 0.0,
+      "visual_score": 0.83,
+      "motion_score": 0.0,
+      "final_score": 0.394,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3613.0,
+      "timecode": "01:00:13",
+      "audio_score": 0.0,
+      "visual_score": 0.769,
+      "motion_score": 0.0,
+      "final_score": 0.365,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3675.0,
+      "timecode": "01:01:15",
+      "audio_score": 0.0,
+      "visual_score": 0.744,
+      "motion_score": 0.0,
+      "final_score": 0.353,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3738.0,
+      "timecode": "01:02:18",
+      "audio_score": 0.0,
+      "visual_score": 0.854,
+      "motion_score": 0.0,
+      "final_score": 0.406,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3741.0,
+      "timecode": "01:02:21",
+      "audio_score": 0.0,
+      "visual_score": 0.772,
+      "motion_score": 0.0,
+      "final_score": 0.367,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3800.0,
+      "timecode": "01:03:20",
+      "audio_score": 0.0,
+      "visual_score": 0.807,
+      "motion_score": 0.0,
+      "final_score": 0.384,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3895.0,
+      "timecode": "01:04:55",
+      "audio_score": 0.0,
+      "visual_score": 0.744,
+      "motion_score": 0.0,
+      "final_score": 0.353,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3924.0,
+      "timecode": "01:05:24",
+      "audio_score": 0.0,
+      "visual_score": 0.764,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3935.0,
+      "timecode": "01:05:35",
+      "audio_score": 0.0,
+      "visual_score": 0.746,
+      "motion_score": 0.0,
+      "final_score": 0.354,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3940.0,
+      "timecode": "01:05:40",
+      "audio_score": 0.0,
+      "visual_score": 0.781,
+      "motion_score": 0.0,
+      "final_score": 0.371,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3944.0,
+      "timecode": "01:05:44",
+      "audio_score": 0.0,
+      "visual_score": 0.797,
+      "motion_score": 0.0,
+      "final_score": 0.378,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3969.0,
+      "timecode": "01:06:09",
+      "audio_score": 0.0,
+      "visual_score": 0.793,
+      "motion_score": 0.0,
+      "final_score": 0.376,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 3973.0,
+      "timecode": "01:06:13",
+      "audio_score": 0.0,
+      "visual_score": 0.756,
+      "motion_score": 0.0,
+      "final_score": 0.359,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4017.344,
+      "timecode": "01:06:57",
+      "audio_score": 0.243,
+      "visual_score": 0.476,
+      "motion_score": 0.0,
+      "final_score": 0.354,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4022.0,
+      "timecode": "01:07:02",
+      "audio_score": 0.0,
+      "visual_score": 0.78,
+      "motion_score": 0.0,
+      "final_score": 0.37,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4027.968,
+      "timecode": "01:07:07",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4033.0,
+      "timecode": "01:07:13",
+      "audio_score": 0.0,
+      "visual_score": 0.93,
+      "motion_score": 0.0,
+      "final_score": 0.442,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4044.0,
+      "timecode": "01:07:24",
+      "audio_score": 0.0,
+      "visual_score": 0.854,
+      "motion_score": 0.0,
+      "final_score": 0.405,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4049.0,
+      "timecode": "01:07:29",
+      "audio_score": 0.0,
+      "visual_score": 0.781,
+      "motion_score": 0.0,
+      "final_score": 0.371,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4065.0,
+      "timecode": "01:07:45",
+      "audio_score": 0.0,
+      "visual_score": 0.741,
+      "motion_score": 0.0,
+      "final_score": 0.352,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4314.0,
+      "timecode": "01:11:54",
+      "audio_score": 0.0,
+      "visual_score": 0.739,
+      "motion_score": 0.0,
+      "final_score": 0.351,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4328.0,
+      "timecode": "01:12:08",
+      "audio_score": 0.0,
+      "visual_score": 0.746,
+      "motion_score": 0.0,
+      "final_score": 0.355,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4385.0,
+      "timecode": "01:13:05",
+      "audio_score": 0.0,
+      "visual_score": 0.83,
+      "motion_score": 0.0,
+      "final_score": 0.394,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4391.04,
+      "timecode": "01:13:11",
+      "audio_score": 0.317,
+      "visual_score": 0.501,
+      "motion_score": 0.0,
+      "final_score": 0.405,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4396.0,
+      "timecode": "01:13:16",
+      "audio_score": 0.0,
+      "visual_score": 0.753,
+      "motion_score": 0.0,
+      "final_score": 0.358,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4400.0,
+      "timecode": "01:13:20",
+      "audio_score": 0.0,
+      "visual_score": 0.767,
+      "motion_score": 0.0,
+      "final_score": 0.364,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4427.0,
+      "timecode": "01:13:47",
+      "audio_score": 0.0,
+      "visual_score": 0.882,
+      "motion_score": 0.0,
+      "final_score": 0.419,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4467.0,
+      "timecode": "01:14:27",
+      "audio_score": 0.0,
+      "visual_score": 0.972,
+      "motion_score": 0.0,
+      "final_score": 0.462,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4489.0,
+      "timecode": "01:14:49",
+      "audio_score": 0.0,
+      "visual_score": 0.753,
+      "motion_score": 0.0,
+      "final_score": 0.358,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4495.616,
+      "timecode": "01:14:55",
+      "audio_score": 0.506,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.741,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4505.0,
+      "timecode": "01:15:05",
+      "audio_score": 0.0,
+      "visual_score": 0.773,
+      "motion_score": 0.0,
+      "final_score": 0.367,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4517.0,
+      "timecode": "01:15:17",
+      "audio_score": 0.0,
+      "visual_score": 0.737,
+      "motion_score": 0.0,
+      "final_score": 0.35,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4541.0,
+      "timecode": "01:15:41",
+      "audio_score": 0.0,
+      "visual_score": 0.857,
+      "motion_score": 0.0,
+      "final_score": 0.407,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4565.0,
+      "timecode": "01:16:05",
+      "audio_score": 0.0,
+      "visual_score": 0.738,
+      "motion_score": 0.0,
+      "final_score": 0.35,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4676.0,
+      "timecode": "01:17:56",
+      "audio_score": 0.0,
+      "visual_score": 0.937,
+      "motion_score": 0.0,
+      "final_score": 0.445,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4682.24,
+      "timecode": "01:18:02",
+      "audio_score": 0.086,
+      "visual_score": 0.823,
+      "motion_score": 0.0,
+      "final_score": 0.436,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4687.0,
+      "timecode": "01:18:07",
+      "audio_score": 0.0,
+      "visual_score": 0.882,
+      "motion_score": 0.0,
+      "final_score": 0.419,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4691.0,
+      "timecode": "01:18:11",
+      "audio_score": 0.0,
+      "visual_score": 0.949,
+      "motion_score": 0.0,
+      "final_score": 0.451,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4698.0,
+      "timecode": "01:18:18",
+      "audio_score": 0.0,
+      "visual_score": 0.828,
+      "motion_score": 0.0,
+      "final_score": 0.393,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4702.0,
+      "timecode": "01:18:22",
+      "audio_score": 0.0,
+      "visual_score": 0.736,
+      "motion_score": 0.0,
+      "final_score": 0.35,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4709.0,
+      "timecode": "01:18:29",
+      "audio_score": 0.0,
+      "visual_score": 0.752,
+      "motion_score": 0.0,
+      "final_score": 0.357,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4746.0,
+      "timecode": "01:19:06",
+      "audio_score": 0.0,
+      "visual_score": 0.82,
+      "motion_score": 0.0,
+      "final_score": 0.39,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4837.0,
+      "timecode": "01:20:37",
+      "audio_score": 0.0,
+      "visual_score": 0.755,
+      "motion_score": 0.0,
+      "final_score": 0.359,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4844.0,
+      "timecode": "01:20:44",
+      "audio_score": 0.0,
+      "visual_score": 0.765,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4904.0,
+      "timecode": "01:21:44",
+      "audio_score": 0.0,
+      "visual_score": 0.764,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4921.0,
+      "timecode": "01:22:01",
+      "audio_score": 0.0,
+      "visual_score": 0.753,
+      "motion_score": 0.0,
+      "final_score": 0.358,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4943.808,
+      "timecode": "01:22:23",
+      "audio_score": 0.325,
+      "visual_score": 0.409,
+      "motion_score": 0.0,
+      "final_score": 0.365,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4954.752,
+      "timecode": "01:22:34",
+      "audio_score": 0.277,
+      "visual_score": 0.457,
+      "motion_score": 0.0,
+      "final_score": 0.362,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4987.2,
+      "timecode": "01:23:07",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 4990.752,
+      "timecode": "01:23:10",
+      "audio_score": 0.155,
+      "visual_score": 0.714,
+      "motion_score": 0.0,
+      "final_score": 0.421,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5004.0,
+      "timecode": "01:23:24",
+      "audio_score": 0.0,
+      "visual_score": 0.791,
+      "motion_score": 0.0,
+      "final_score": 0.376,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5009.0,
+      "timecode": "01:23:29",
+      "audio_score": 0.0,
+      "visual_score": 0.814,
+      "motion_score": 0.0,
+      "final_score": 0.387,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5042.848,
+      "timecode": "01:24:02",
+      "audio_score": 0.992,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.996,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5067.0,
+      "timecode": "01:24:27",
+      "audio_score": 0.0,
+      "visual_score": 0.796,
+      "motion_score": 0.0,
+      "final_score": 0.378,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5070.0,
+      "timecode": "01:24:30",
+      "audio_score": 0.0,
+      "visual_score": 0.752,
+      "motion_score": 0.0,
+      "final_score": 0.357,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5215.0,
+      "timecode": "01:26:55",
+      "audio_score": 0.0,
+      "visual_score": 0.86,
+      "motion_score": 0.0,
+      "final_score": 0.409,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5219.0,
+      "timecode": "01:26:59",
+      "audio_score": 0.0,
+      "visual_score": 0.794,
+      "motion_score": 0.0,
+      "final_score": 0.377,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5255.0,
+      "timecode": "01:27:35",
+      "audio_score": 0.0,
+      "visual_score": 0.764,
+      "motion_score": 0.0,
+      "final_score": 0.363,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5267.0,
+      "timecode": "01:27:47",
+      "audio_score": 0.0,
+      "visual_score": 0.748,
+      "motion_score": 0.0,
+      "final_score": 0.355,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5282.0,
+      "timecode": "01:28:02",
+      "audio_score": 0.0,
+      "visual_score": 0.952,
+      "motion_score": 0.0,
+      "final_score": 0.452,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5286.0,
+      "timecode": "01:28:06",
+      "audio_score": 0.0,
+      "visual_score": 0.837,
+      "motion_score": 0.0,
+      "final_score": 0.397,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5290.0,
+      "timecode": "01:28:10",
+      "audio_score": 0.0,
+      "visual_score": 0.875,
+      "motion_score": 0.0,
+      "final_score": 0.416,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5293.0,
+      "timecode": "01:28:13",
+      "audio_score": 0.0,
+      "visual_score": 0.855,
+      "motion_score": 0.0,
+      "final_score": 0.406,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5298.0,
+      "timecode": "01:28:18",
+      "audio_score": 0.0,
+      "visual_score": 0.783,
+      "motion_score": 0.0,
+      "final_score": 0.372,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5301.0,
+      "timecode": "01:28:21",
+      "audio_score": 0.0,
+      "visual_score": 0.775,
+      "motion_score": 0.0,
+      "final_score": 0.368,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5305.0,
+      "timecode": "01:28:25",
+      "audio_score": 0.0,
+      "visual_score": 0.896,
+      "motion_score": 0.0,
+      "final_score": 0.426,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5311.0,
+      "timecode": "01:28:31",
+      "audio_score": 0.0,
+      "visual_score": 0.785,
+      "motion_score": 0.0,
+      "final_score": 0.373,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5314.0,
+      "timecode": "01:28:34",
+      "audio_score": 0.0,
+      "visual_score": 0.78,
+      "motion_score": 0.0,
+      "final_score": 0.371,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5317.0,
+      "timecode": "01:28:37",
+      "audio_score": 0.0,
+      "visual_score": 0.777,
+      "motion_score": 0.0,
+      "final_score": 0.369,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5321.0,
+      "timecode": "01:28:41",
+      "audio_score": 0.0,
+      "visual_score": 0.789,
+      "motion_score": 0.0,
+      "final_score": 0.375,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5326.0,
+      "timecode": "01:28:46",
+      "audio_score": 0.0,
+      "visual_score": 0.885,
+      "motion_score": 0.0,
+      "final_score": 0.42,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5354.72,
+      "timecode": "01:29:14",
+      "audio_score": 0.292,
+      "visual_score": 0.494,
+      "motion_score": 0.0,
+      "final_score": 0.388,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5358.144,
+      "timecode": "01:29:18",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5370.24,
+      "timecode": "01:29:30",
+      "audio_score": 0.222,
+      "visual_score": 0.552,
+      "motion_score": 0.0,
+      "final_score": 0.379,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5373.504,
+      "timecode": "01:29:33",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5377.952,
+      "timecode": "01:29:37",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5381.0,
+      "timecode": "01:29:41",
+      "audio_score": 0.0,
+      "visual_score": 0.835,
+      "motion_score": 0.0,
+      "final_score": 0.397,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5384.16,
+      "timecode": "01:29:44",
+      "audio_score": 1.0,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 1.0,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5403.968,
+      "timecode": "01:30:03",
+      "audio_score": 0.551,
+      "visual_score": 1.0,
+      "motion_score": 0.0,
+      "final_score": 0.764,
+      "audio_certain": true,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5416.0,
+      "timecode": "01:30:16",
+      "audio_score": 0.0,
+      "visual_score": 0.78,
+      "motion_score": 0.0,
+      "final_score": 0.37,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5624.0,
+      "timecode": "01:33:44",
+      "audio_score": 0.0,
+      "visual_score": 0.822,
+      "motion_score": 0.0,
+      "final_score": 0.391,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5627.0,
+      "timecode": "01:33:47",
+      "audio_score": 0.0,
+      "visual_score": 0.753,
+      "motion_score": 0.0,
+      "final_score": 0.358,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5636.128,
+      "timecode": "01:33:56",
+      "audio_score": 0.285,
+      "visual_score": 0.482,
+      "motion_score": 0.0,
+      "final_score": 0.379,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5668.0,
+      "timecode": "01:34:28",
+      "audio_score": 0.0,
+      "visual_score": 0.748,
+      "motion_score": 0.0,
+      "final_score": 0.355,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5694.0,
+      "timecode": "01:34:54",
+      "audio_score": 0.0,
+      "visual_score": 0.794,
+      "motion_score": 0.0,
+      "final_score": 0.377,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5841.0,
+      "timecode": "01:37:21",
+      "audio_score": 0.0,
+      "visual_score": 0.839,
+      "motion_score": 0.0,
+      "final_score": 0.399,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5849.0,
+      "timecode": "01:37:29",
+      "audio_score": 0.0,
+      "visual_score": 0.825,
+      "motion_score": 0.0,
+      "final_score": 0.392,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5852.0,
+      "timecode": "01:37:32",
+      "audio_score": 0.0,
+      "visual_score": 0.862,
+      "motion_score": 0.0,
+      "final_score": 0.41,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5855.0,
+      "timecode": "01:37:35",
+      "audio_score": 0.0,
+      "visual_score": 0.756,
+      "motion_score": 0.0,
+      "final_score": 0.359,
+      "audio_certain": false,
+      "motion_detail": {}
+    },
+    {
+      "time_s": 5862.0,
+      "timecode": "01:37:42",
+      "audio_score": 0.0,
+      "visual_score": 0.89,
+      "motion_score": 0.0,
+      "final_score": 0.423,
+      "audio_certain": false,
+      "motion_detail": {}
+    }
+  ]
+}
