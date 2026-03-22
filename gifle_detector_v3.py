@@ -162,7 +162,7 @@ def load_clap(device: str):
     import laion_clap
     if not os.path.exists(CLAP_CKPT):
         raise FileNotFoundError(f"Checkpoint CLAP manquant: {CLAP_CKPT}")
-    model = laion_clap.CLAP_Module(enable_fusion=True, amodel="HTSAT-base")
+    model = laion_clap.CLAP_Module(enable_fusion=False, amodel="HTSAT-base")
     model.load_ckpt(CLAP_CKPT)
     model.eval()
     if device == "cuda":
@@ -280,30 +280,44 @@ def dfn5b_score(dfn_model, preprocess, tokenizer,
 
 # ── Passe 4 : MediaPipe wrist velocity + head snap ───────────────────────────
 
+POSE_MODEL_PATH = os.path.join(CKPT_DIR, "pose_landmarker_heavy.task")
+
 def mediapipe_motion_score(video_path: str, timestamps: List[float],
                             fps: float) -> Tuple[np.ndarray, List[dict]]:
     """
     Pour chaque timestamp :
     - Extrait MEDIAPIPE_FRAMES frames
-    - Detecte pose via MediaPipe
+    - Detecte pose via MediaPipe Tasks API (pose_landmarker_heavy)
     - Calcule vitesse max poignet (wrist velocity)
     - Calcule deplacement lateral tete (head snap)
     Retourne scores [0,1] et details par timestamp.
     """
     import mediapipe as mp
+    from mediapipe.tasks import python as mp_python
+    from mediapipe.tasks.python import vision as mp_vision
 
-    mp_pose = mp.solutions.pose
+    if not os.path.exists(POSE_MODEL_PATH):
+        raise FileNotFoundError(
+            f"Modele MediaPipe manquant: {POSE_MODEL_PATH}\n"
+            "Telechargez pose_landmarker_heavy.task depuis storage.googleapis.com"
+        )
+
+    base_options = mp_python.BaseOptions(model_asset_path=POSE_MODEL_PATH)
+    options = mp_vision.PoseLandmarkerOptions(
+        base_options=base_options,
+        running_mode=mp_vision.RunningMode.IMAGE,
+        num_poses=4,
+        min_pose_detection_confidence=0.3,
+        min_pose_presence_confidence=0.3,
+        min_tracking_confidence=0.3,
+    )
+
     scores = []
     details = []
 
     print(f"  Analyse MediaPipe sur {len(timestamps)} candidats...", flush=True)
 
-    with mp_pose.Pose(
-        static_image_mode=True,
-        model_complexity=2,          # max precision
-        enable_segmentation=False,
-        min_detection_confidence=0.3
-    ) as pose:
+    with mp_vision.PoseLandmarker.create_from_options(options) as landmarker:
         for idx, t in enumerate(timestamps):
             frames = extract_frames_around(video_path, t, MEDIAPIPE_FRAMES, fps)
             if len(frames) < 4:
@@ -311,17 +325,18 @@ def mediapipe_motion_score(video_path: str, timestamps: List[float],
                 details.append({"wrist_vel": 0.0, "head_snap": 0.0, "n_frames": len(frames)})
                 continue
 
-            # Landmarks par frame
+            # Landmarks par frame via Tasks API
             landmarks_per_frame = []
             for frame in frames:
                 if frame is None:
                     landmarks_per_frame.append(None)
                     continue
-                h, w = frame.shape[:2]
                 rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                result = pose.process(rgb)
-                if result.pose_landmarks:
-                    lm = result.pose_landmarks.landmark
+                mp_img = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
+                result = landmarker.detect(mp_img)
+                if result.pose_landmarks and len(result.pose_landmarks) > 0:
+                    # Prendre la premiere pose detectee
+                    lm = result.pose_landmarks[0]
                     landmarks_per_frame.append({
                         "left_wrist":  (lm[15].x, lm[15].y, lm[15].visibility),
                         "right_wrist": (lm[16].x, lm[16].y, lm[16].visibility),
