@@ -1,0 +1,25 @@
+# Large files
+*.pt
+*.pth
+*.onnx
+*.mp4
+*.mkv
+*.avi
+*.wav
+*.mp3
+
+# Clips exports
+clips_*/
+clips_gifles/
+clips_portes*/
+clips_shigan/
+
+# Cache
+*_cache.pt
+__pycache__/
+*.pyc
+.env
+
+# Results (keep JSONs but not huge ones)
+# gifles_imagebind.json  <- keep
+# portes_imagebind*.json <- keep
