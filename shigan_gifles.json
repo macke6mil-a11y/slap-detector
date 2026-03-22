@@ -1,0 +1,838 @@
+{
+  "video": "F:/[kr]/copie_de_[kr]_D/kim_ki_duk/SHI GAN (TIME).mkv",
+  "duration_s": 5900.2,
+  "model": "ImageBind-huge",
+  "top_audio_k": 300,
+  "audio_weight": 0.5,
+  "visual_weight": 0.5,
+  "min_final_score": 0.2,
+  "n_detections": 118,
+  "detections": [
+    {
+      "time_s": 370.0,
+      "timecode": "00:06:10",
+      "audio_score": 0.705,
+      "visual_score": 0.543,
+      "final_score": 0.624
+    },
+    {
+      "time_s": 381.0,
+      "timecode": "00:06:21",
+      "audio_score": 0.747,
+      "visual_score": 0.52,
+      "final_score": 0.634
+    },
+    {
+      "time_s": 386.0,
+      "timecode": "00:06:26",
+      "audio_score": 0.669,
+      "visual_score": 0.827,
+      "final_score": 0.748
+    },
+    {
+      "time_s": 453.0,
+      "timecode": "00:07:33",
+      "audio_score": 0.684,
+      "visual_score": 0.493,
+      "final_score": 0.588
+    },
+    {
+      "time_s": 501.0,
+      "timecode": "00:08:21",
+      "audio_score": 0.693,
+      "visual_score": 0.649,
+      "final_score": 0.671
+    },
+    {
+      "time_s": 572.0,
+      "timecode": "00:09:32",
+      "audio_score": 0.681,
+      "visual_score": 0.735,
+      "final_score": 0.708
+    },
+    {
+      "time_s": 577.0,
+      "timecode": "00:09:37",
+      "audio_score": 0.702,
+      "visual_score": 0.399,
+      "final_score": 0.55
+    },
+    {
+      "time_s": 582.0,
+      "timecode": "00:09:42",
+      "audio_score": 0.673,
+      "visual_score": 0.671,
+      "final_score": 0.672
+    },
+    {
+      "time_s": 589.0,
+      "timecode": "00:09:49",
+      "audio_score": 0.863,
+      "visual_score": 0.66,
+      "final_score": 0.762
+    },
+    {
+      "time_s": 595.0,
+      "timecode": "00:09:55",
+      "audio_score": 0.778,
+      "visual_score": 0.663,
+      "final_score": 0.72
+    },
+    {
+      "time_s": 600.0,
+      "timecode": "00:10:00",
+      "audio_score": 0.688,
+      "visual_score": 0.238,
+      "final_score": 0.463
+    },
+    {
+      "time_s": 651.0,
+      "timecode": "00:10:51",
+      "audio_score": 0.852,
+      "visual_score": 0.504,
+      "final_score": 0.678
+    },
+    {
+      "time_s": 656.0,
+      "timecode": "00:10:56",
+      "audio_score": 0.747,
+      "visual_score": 0.567,
+      "final_score": 0.657
+    },
+    {
+      "time_s": 666.0,
+      "timecode": "00:11:06",
+      "audio_score": 0.705,
+      "visual_score": 0.544,
+      "final_score": 0.624
+    },
+    {
+      "time_s": 671.0,
+      "timecode": "00:11:11",
+      "audio_score": 0.737,
+      "visual_score": 0.525,
+      "final_score": 0.631
+    },
+    {
+      "time_s": 680.0,
+      "timecode": "00:11:20",
+      "audio_score": 0.826,
+      "visual_score": 0.577,
+      "final_score": 0.702
+    },
+    {
+      "time_s": 685.0,
+      "timecode": "00:11:25",
+      "audio_score": 0.718,
+      "visual_score": 0.609,
+      "final_score": 0.664
+    },
+    {
+      "time_s": 759.0,
+      "timecode": "00:12:39",
+      "audio_score": 0.733,
+      "visual_score": 0.451,
+      "final_score": 0.592
+    },
+    {
+      "time_s": 1136.0,
+      "timecode": "00:18:56",
+      "audio_score": 0.694,
+      "visual_score": 0.378,
+      "final_score": 0.536
+    },
+    {
+      "time_s": 1150.0,
+      "timecode": "00:19:10",
+      "audio_score": 0.706,
+      "visual_score": 0.624,
+      "final_score": 0.665
+    },
+    {
+      "time_s": 1171.0,
+      "timecode": "00:19:31",
+      "audio_score": 0.711,
+      "visual_score": 0.749,
+      "final_score": 0.73
+    },
+    {
+      "time_s": 1209.0,
+      "timecode": "00:20:09",
+      "audio_score": 0.721,
+      "visual_score": 0.365,
+      "final_score": 0.543
+    },
+    {
+      "time_s": 1230.0,
+      "timecode": "00:20:30",
+      "audio_score": 0.696,
+      "visual_score": 0.654,
+      "final_score": 0.675
+    },
+    {
+      "time_s": 1286.0,
+      "timecode": "00:21:26",
+      "audio_score": 0.702,
+      "visual_score": 0.582,
+      "final_score": 0.642
+    },
+    {
+      "time_s": 1291.0,
+      "timecode": "00:21:31",
+      "audio_score": 0.697,
+      "visual_score": 0.51,
+      "final_score": 0.604
+    },
+    {
+      "time_s": 1302.0,
+      "timecode": "00:21:42",
+      "audio_score": 0.666,
+      "visual_score": 0.486,
+      "final_score": 0.576
+    },
+    {
+      "time_s": 1322.0,
+      "timecode": "00:22:02",
+      "audio_score": 0.67,
+      "visual_score": 0.621,
+      "final_score": 0.645
+    },
+    {
+      "time_s": 1328.0,
+      "timecode": "00:22:08",
+      "audio_score": 0.788,
+      "visual_score": 0.704,
+      "final_score": 0.746
+    },
+    {
+      "time_s": 1550.0,
+      "timecode": "00:25:50",
+      "audio_score": 0.672,
+      "visual_score": 0.301,
+      "final_score": 0.487
+    },
+    {
+      "time_s": 1569.0,
+      "timecode": "00:26:09",
+      "audio_score": 0.688,
+      "visual_score": 0.746,
+      "final_score": 0.717
+    },
+    {
+      "time_s": 1585.0,
+      "timecode": "00:26:25",
+      "audio_score": 0.746,
+      "visual_score": 0.916,
+      "final_score": 0.831
+    },
+    {
+      "time_s": 1594.0,
+      "timecode": "00:26:34",
+      "audio_score": 0.683,
+      "visual_score": 0.875,
+      "final_score": 0.779
+    },
+    {
+      "time_s": 1615.0,
+      "timecode": "00:26:55",
+      "audio_score": 0.688,
+      "visual_score": 0.325,
+      "final_score": 0.507
+    },
+    {
+      "time_s": 1940.0,
+      "timecode": "00:32:20",
+      "audio_score": 0.716,
+      "visual_score": 0.324,
+      "final_score": 0.52
+    },
+    {
+      "time_s": 1951.0,
+      "timecode": "00:32:31",
+      "audio_score": 0.677,
+      "visual_score": 0.0,
+      "final_score": 0.338
+    },
+    {
+      "time_s": 1956.0,
+      "timecode": "00:32:36",
+      "audio_score": 0.675,
+      "visual_score": 0.181,
+      "final_score": 0.428
+    },
+    {
+      "time_s": 2007.0,
+      "timecode": "00:33:27",
+      "audio_score": 0.703,
+      "visual_score": 0.526,
+      "final_score": 0.615
+    },
+    {
+      "time_s": 2361.0,
+      "timecode": "00:39:21",
+      "audio_score": 0.68,
+      "visual_score": 0.781,
+      "final_score": 0.731
+    },
+    {
+      "time_s": 2410.0,
+      "timecode": "00:40:10",
+      "audio_score": 0.675,
+      "visual_score": 0.26,
+      "final_score": 0.468
+    },
+    {
+      "time_s": 2426.0,
+      "timecode": "00:40:26",
+      "audio_score": 0.726,
+      "visual_score": 0.267,
+      "final_score": 0.497
+    },
+    {
+      "time_s": 2435.0,
+      "timecode": "00:40:35",
+      "audio_score": 0.73,
+      "visual_score": 0.252,
+      "final_score": 0.491
+    },
+    {
+      "time_s": 2475.0,
+      "timecode": "00:41:15",
+      "audio_score": 0.717,
+      "visual_score": 0.312,
+      "final_score": 0.515
+    },
+    {
+      "time_s": 2505.0,
+      "timecode": "00:41:45",
+      "audio_score": 0.724,
+      "visual_score": 0.387,
+      "final_score": 0.555
+    },
+    {
+      "time_s": 2663.0,
+      "timecode": "00:44:23",
+      "audio_score": 0.67,
+      "visual_score": 0.317,
+      "final_score": 0.494
+    },
+    {
+      "time_s": 2866.0,
+      "timecode": "00:47:46",
+      "audio_score": 0.688,
+      "visual_score": 0.554,
+      "final_score": 0.621
+    },
+    {
+      "time_s": 3120.0,
+      "timecode": "00:52:00",
+      "audio_score": 0.69,
+      "visual_score": 0.449,
+      "final_score": 0.569
+    },
+    {
+      "time_s": 3242.0,
+      "timecode": "00:54:02",
+      "audio_score": 0.758,
+      "visual_score": 0.696,
+      "final_score": 0.727
+    },
+    {
+      "time_s": 3262.0,
+      "timecode": "00:54:22",
+      "audio_score": 0.744,
+      "visual_score": 0.627,
+      "final_score": 0.685
+    },
+    {
+      "time_s": 3272.0,
+      "timecode": "00:54:32",
+      "audio_score": 0.78,
+      "visual_score": 0.652,
+      "final_score": 0.716
+    },
+    {
+      "time_s": 3312.0,
+      "timecode": "00:55:12",
+      "audio_score": 0.743,
+      "visual_score": 0.459,
+      "final_score": 0.601
+    },
+    {
+      "time_s": 3374.0,
+      "timecode": "00:56:14",
+      "audio_score": 0.695,
+      "visual_score": 0.532,
+      "final_score": 0.614
+    },
+    {
+      "time_s": 3384.0,
+      "timecode": "00:56:24",
+      "audio_score": 0.706,
+      "visual_score": 0.54,
+      "final_score": 0.623
+    },
+    {
+      "time_s": 3393.0,
+      "timecode": "00:56:33",
+      "audio_score": 0.683,
+      "visual_score": 0.378,
+      "final_score": 0.531
+    },
+    {
+      "time_s": 3400.0,
+      "timecode": "00:56:40",
+      "audio_score": 0.707,
+      "visual_score": 0.322,
+      "final_score": 0.514
+    },
+    {
+      "time_s": 3442.0,
+      "timecode": "00:57:22",
+      "audio_score": 0.718,
+      "visual_score": 0.541,
+      "final_score": 0.63
+    },
+    {
+      "time_s": 3657.0,
+      "timecode": "01:00:57",
+      "audio_score": 0.691,
+      "visual_score": 0.636,
+      "final_score": 0.664
+    },
+    {
+      "time_s": 3675.0,
+      "timecode": "01:01:15",
+      "audio_score": 0.864,
+      "visual_score": 0.982,
+      "final_score": 0.923
+    },
+    {
+      "time_s": 3684.0,
+      "timecode": "01:01:24",
+      "audio_score": 0.901,
+      "visual_score": 0.906,
+      "final_score": 0.904
+    },
+    {
+      "time_s": 3696.0,
+      "timecode": "01:01:36",
+      "audio_score": 0.8,
+      "visual_score": 0.38,
+      "final_score": 0.59
+    },
+    {
+      "time_s": 3702.0,
+      "timecode": "01:01:42",
+      "audio_score": 0.827,
+      "visual_score": 0.467,
+      "final_score": 0.647
+    },
+    {
+      "time_s": 3859.0,
+      "timecode": "01:04:19",
+      "audio_score": 0.757,
+      "visual_score": 0.58,
+      "final_score": 0.668
+    },
+    {
+      "time_s": 3868.0,
+      "timecode": "01:04:28",
+      "audio_score": 0.796,
+      "visual_score": 0.662,
+      "final_score": 0.729
+    },
+    {
+      "time_s": 3880.0,
+      "timecode": "01:04:40",
+      "audio_score": 0.799,
+      "visual_score": 0.528,
+      "final_score": 0.664
+    },
+    {
+      "time_s": 3887.0,
+      "timecode": "01:04:47",
+      "audio_score": 0.762,
+      "visual_score": 0.672,
+      "final_score": 0.717
+    },
+    {
+      "time_s": 3892.0,
+      "timecode": "01:04:52",
+      "audio_score": 0.667,
+      "visual_score": 0.586,
+      "final_score": 0.627
+    },
+    {
+      "time_s": 3908.0,
+      "timecode": "01:05:08",
+      "audio_score": 0.715,
+      "visual_score": 0.58,
+      "final_score": 0.647
+    },
+    {
+      "time_s": 3922.0,
+      "timecode": "01:05:22",
+      "audio_score": 0.722,
+      "visual_score": 0.645,
+      "final_score": 0.684
+    },
+    {
+      "time_s": 3931.0,
+      "timecode": "01:05:31",
+      "audio_score": 0.768,
+      "visual_score": 0.628,
+      "final_score": 0.698
+    },
+    {
+      "time_s": 3938.0,
+      "timecode": "01:05:38",
+      "audio_score": 0.885,
+      "visual_score": 0.632,
+      "final_score": 0.759
+    },
+    {
+      "time_s": 3963.0,
+      "timecode": "01:06:03",
+      "audio_score": 0.785,
+      "visual_score": 0.538,
+      "final_score": 0.661
+    },
+    {
+      "time_s": 3971.0,
+      "timecode": "01:06:11",
+      "audio_score": 0.72,
+      "visual_score": 1.0,
+      "final_score": 0.86
+    },
+    {
+      "time_s": 3976.0,
+      "timecode": "01:06:16",
+      "audio_score": 0.755,
+      "visual_score": 0.423,
+      "final_score": 0.589
+    },
+    {
+      "time_s": 3986.0,
+      "timecode": "01:06:26",
+      "audio_score": 0.788,
+      "visual_score": 0.608,
+      "final_score": 0.698
+    },
+    {
+      "time_s": 3992.0,
+      "timecode": "01:06:32",
+      "audio_score": 0.683,
+      "visual_score": 0.547,
+      "final_score": 0.615
+    },
+    {
+      "time_s": 4005.0,
+      "timecode": "01:06:45",
+      "audio_score": 0.72,
+      "visual_score": 0.694,
+      "final_score": 0.707
+    },
+    {
+      "time_s": 4170.0,
+      "timecode": "01:09:30",
+      "audio_score": 0.699,
+      "visual_score": 0.627,
+      "final_score": 0.663
+    },
+    {
+      "time_s": 4205.0,
+      "timecode": "01:10:05",
+      "audio_score": 0.767,
+      "visual_score": 0.483,
+      "final_score": 0.625
+    },
+    {
+      "time_s": 4211.0,
+      "timecode": "01:10:11",
+      "audio_score": 0.713,
+      "visual_score": 0.474,
+      "final_score": 0.594
+    },
+    {
+      "time_s": 4229.0,
+      "timecode": "01:10:29",
+      "audio_score": 0.754,
+      "visual_score": 0.463,
+      "final_score": 0.608
+    },
+    {
+      "time_s": 4250.0,
+      "timecode": "01:10:50",
+      "audio_score": 0.693,
+      "visual_score": 0.862,
+      "final_score": 0.778
+    },
+    {
+      "time_s": 4270.0,
+      "timecode": "01:11:10",
+      "audio_score": 0.836,
+      "visual_score": 0.82,
+      "final_score": 0.828
+    },
+    {
+      "time_s": 4277.0,
+      "timecode": "01:11:17",
+      "audio_score": 0.816,
+      "visual_score": 0.626,
+      "final_score": 0.721
+    },
+    {
+      "time_s": 4286.0,
+      "timecode": "01:11:26",
+      "audio_score": 0.715,
+      "visual_score": 0.633,
+      "final_score": 0.674
+    },
+    {
+      "time_s": 4303.0,
+      "timecode": "01:11:43",
+      "audio_score": 0.697,
+      "visual_score": 0.832,
+      "final_score": 0.764
+    },
+    {
+      "time_s": 4387.0,
+      "timecode": "01:13:07",
+      "audio_score": 0.705,
+      "visual_score": 0.659,
+      "final_score": 0.682
+    },
+    {
+      "time_s": 4393.0,
+      "timecode": "01:13:13",
+      "audio_score": 0.693,
+      "visual_score": 0.662,
+      "final_score": 0.678
+    },
+    {
+      "time_s": 4407.0,
+      "timecode": "01:13:27",
+      "audio_score": 0.725,
+      "visual_score": 0.512,
+      "final_score": 0.618
+    },
+    {
+      "time_s": 4474.0,
+      "timecode": "01:14:34",
+      "audio_score": 0.666,
+      "visual_score": 0.469,
+      "final_score": 0.568
+    },
+    {
+      "time_s": 4481.0,
+      "timecode": "01:14:41",
+      "audio_score": 0.671,
+      "visual_score": 0.729,
+      "final_score": 0.7
+    },
+    {
+      "time_s": 4486.0,
+      "timecode": "01:14:46",
+      "audio_score": 0.688,
+      "visual_score": 0.62,
+      "final_score": 0.654
+    },
+    {
+      "time_s": 4491.0,
+      "timecode": "01:14:51",
+      "audio_score": 0.701,
+      "visual_score": 0.602,
+      "final_score": 0.652
+    },
+    {
+      "time_s": 4844.0,
+      "timecode": "01:20:44",
+      "audio_score": 0.717,
+      "visual_score": 0.84,
+      "final_score": 0.779
+    },
+    {
+      "time_s": 4851.0,
+      "timecode": "01:20:51",
+      "audio_score": 0.921,
+      "visual_score": 0.897,
+      "final_score": 0.909
+    },
+    {
+      "time_s": 4875.0,
+      "timecode": "01:21:15",
+      "audio_score": 0.688,
+      "visual_score": 0.733,
+      "final_score": 0.711
+    },
+    {
+      "time_s": 5013.0,
+      "timecode": "01:23:33",
+      "audio_score": 0.689,
+      "visual_score": 0.429,
+      "final_score": 0.559
+    },
+    {
+      "time_s": 5023.0,
+      "timecode": "01:23:43",
+      "audio_score": 0.785,
+      "visual_score": 0.449,
+      "final_score": 0.617
+    },
+    {
+      "time_s": 5166.0,
+      "timecode": "01:26:06",
+      "audio_score": 0.838,
+      "visual_score": 0.872,
+      "final_score": 0.855
+    },
+    {
+      "time_s": 5181.0,
+      "timecode": "01:26:21",
+      "audio_score": 0.922,
+      "visual_score": 0.253,
+      "final_score": 0.587
+    },
+    {
+      "time_s": 5203.0,
+      "timecode": "01:26:43",
+      "audio_score": 0.689,
+      "visual_score": 0.398,
+      "final_score": 0.543
+    },
+    {
+      "time_s": 5226.0,
+      "timecode": "01:27:06",
+      "audio_score": 0.751,
+      "visual_score": 0.241,
+      "final_score": 0.496
+    },
+    {
+      "time_s": 5259.0,
+      "timecode": "01:27:39",
+      "audio_score": 0.678,
+      "visual_score": 0.441,
+      "final_score": 0.559
+    },
+    {
+      "time_s": 5268.0,
+      "timecode": "01:27:48",
+      "audio_score": 0.675,
+      "visual_score": 0.493,
+      "final_score": 0.584
+    },
+    {
+      "time_s": 5277.0,
+      "timecode": "01:27:57",
+      "audio_score": 0.709,
+      "visual_score": 0.587,
+      "final_score": 0.648
+    },
+    {
+      "time_s": 5425.0,
+      "timecode": "01:30:25",
+      "audio_score": 0.715,
+      "visual_score": 0.563,
+      "final_score": 0.639
+    },
+    {
+      "time_s": 5477.0,
+      "timecode": "01:31:17",
+      "audio_score": 0.749,
+      "visual_score": 0.619,
+      "final_score": 0.684
+    },
+    {
+      "time_s": 5484.0,
+      "timecode": "01:31:24",
+      "audio_score": 0.702,
+      "visual_score": 0.708,
+      "final_score": 0.705
+    },
+    {
+      "time_s": 5492.0,
+      "timecode": "01:31:32",
+      "audio_score": 0.694,
+      "visual_score": 0.536,
+      "final_score": 0.615
+    },
+    {
+      "time_s": 5529.0,
+      "timecode": "01:32:09",
+      "audio_score": 0.874,
+      "visual_score": 0.498,
+      "final_score": 0.686
+    },
+    {
+      "time_s": 5541.0,
+      "timecode": "01:32:21",
+      "audio_score": 0.874,
+      "visual_score": 0.554,
+      "final_score": 0.714
+    },
+    {
+      "time_s": 5547.0,
+      "timecode": "01:32:27",
+      "audio_score": 0.839,
+      "visual_score": 0.735,
+      "final_score": 0.787
+    },
+    {
+      "time_s": 5552.0,
+      "timecode": "01:32:32",
+      "audio_score": 0.956,
+      "visual_score": 0.82,
+      "final_score": 0.888
+    },
+    {
+      "time_s": 5562.0,
+      "timecode": "01:32:42",
+      "audio_score": 0.822,
+      "visual_score": 0.595,
+      "final_score": 0.709
+    },
+    {
+      "time_s": 5568.0,
+      "timecode": "01:32:48",
+      "audio_score": 0.735,
+      "visual_score": 0.379,
+      "final_score": 0.557
+    },
+    {
+      "time_s": 5573.0,
+      "timecode": "01:32:53",
+      "audio_score": 1.0,
+      "visual_score": 0.638,
+      "final_score": 0.819
+    },
+    {
+      "time_s": 5578.0,
+      "timecode": "01:32:58",
+      "audio_score": 0.716,
+      "visual_score": 0.698,
+      "final_score": 0.707
+    },
+    {
+      "time_s": 5583.0,
+      "timecode": "01:33:03",
+      "audio_score": 0.684,
+      "visual_score": 0.747,
+      "final_score": 0.715
+    },
+    {
+      "time_s": 5591.0,
+      "timecode": "01:33:11",
+      "audio_score": 0.764,
+      "visual_score": 0.755,
+      "final_score": 0.759
+    },
+    {
+      "time_s": 5661.0,
+      "timecode": "01:34:21",
+      "audio_score": 0.737,
+      "visual_score": 0.686,
+      "final_score": 0.712
+    }
+  ]
+}
